@@ -28,20 +28,28 @@ public class Evento {
 	@Column(name="fechaEvento", nullable=false)
 	private Date fechaEvento;
 
-	/*@ManyToOne
+	@ManyToOne
 	@JoinColumn(name="idTipoEvento", nullable=false)
 	private TipoEvento idTipoEvento;
 	
+	/*
 	@ManyToOne
 	@JoinColumn(name="idPersona", nullable=false)
 	private Persona idPersona;*/
-	
-	public Evento(int idEvento, String nombreEvento, String descripcionEvento, Date fechaEvento) {
+
+	public Evento(int idEvento, String nombreEvento, String descripcionEvento, Date fechaEvento,
+			TipoEvento idTipoEvento) {
 		super();
 		this.idEvento = idEvento;
 		this.nombreEvento = nombreEvento;
 		this.descripcionEvento = descripcionEvento;
 		this.fechaEvento = fechaEvento;
+		this.idTipoEvento = idTipoEvento;
+	}
+
+	public Evento() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getIdEvento() {
@@ -74,7 +82,19 @@ public class Evento {
 
 	public void setFechaEvento(Date fechaEvento) {
 		this.fechaEvento = fechaEvento;
-	}	
+	}
+
+	public TipoEvento getIdTipoEvento() {
+		return idTipoEvento;
+	}
+
+	public void setIdTipoEvento(TipoEvento idTipoEvento) {
+		this.idTipoEvento = idTipoEvento;
+	}
+	
+	
+	
+	
 	
 	
 }
