@@ -1,5 +1,6 @@
 package pe.edu.upc.daoimpl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,9 @@ import javax.transaction.Transactional;
 import pe.edu.upc.dao.ITipoNota;
 import pe.edu.upc.entity.TipoNota;
 
-public class TipoNotaDaoImpl implements ITipoNota {
+public class TipoNotaDaoImpl implements ITipoNota, Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;

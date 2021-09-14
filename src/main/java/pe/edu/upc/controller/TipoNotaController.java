@@ -44,8 +44,6 @@ public class TipoNotaController {
 		tnService.eliminar(tnota.getIdTipoNota());
 	}
 	
-	
-	
 	public TipoNota getTiponota() {
 		return tiponota;
 	}
