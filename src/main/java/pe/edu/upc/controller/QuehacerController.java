@@ -106,7 +106,7 @@ public class QuehacerController implements Serializable {
 
 	public void eliminar(Quehacer quehacer) {
 		qService.eliminar(quehacer.getIdQuehacer());
-		this.listarQuehacer();
+		this.listarquehacer();
 	}
 
 	
