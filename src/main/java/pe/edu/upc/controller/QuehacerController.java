@@ -11,10 +11,8 @@ import javax.inject.Named;
 
 import pe.edu.upc.dao.IEstado;
 import pe.edu.upc.entity.Estado;
-import pe.edu.upc.entity.Nota;
 import pe.edu.upc.entity.Persona;
 import pe.edu.upc.entity.Quehacer;
-import pe.edu.upc.entity.TipoNota;
 import pe.edu.upc.entity.TipoQuehacer;
 import pe.edu.upc.service.IPersonaService;
 import pe.edu.upc.service.IQuehacer;
