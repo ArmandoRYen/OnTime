@@ -1,5 +1,6 @@
 package pe.edu.upc.daoimpl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,10 @@ import javax.transaction.Transactional;
 import pe.edu.upc.dao.IEstado;
 import pe.edu.upc.entity.Estado;
 
-public class EstadoDaoImpl implements IEstado {
+public class EstadoDaoImpl implements IEstado, Serializable {
+	
+		private static final long serialVersionUID = 1L;
+	
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
 	
@@ -25,7 +29,7 @@ public class EstadoDaoImpl implements IEstado {
 	@Override
 	public List<Estado> listar() {
 		List<Estado> lista = new ArrayList<Estado>(); 
-		Query q = em.createQuery("select m from Estado m");
+		Query q = em.createQuery("select es from Estado es");
 		lista =(List<Estado>) q.getResultList();		
 		return lista;
 	}

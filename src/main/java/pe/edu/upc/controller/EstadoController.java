@@ -1,5 +1,6 @@
 package pe.edu.upc.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +14,12 @@ import pe.edu.upc.service.IEstadoService;
 
 @Named
 @RequestScoped
-public class EstadoController {
+public class EstadoController implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private IEstadoService eService;
+	private IEstadoService esService;
 	private Estado estado;
 	List<Estado> ListaEstado;
 	
@@ -29,17 +32,17 @@ public class EstadoController {
 	}
 	
 	public void insertar() {
-		eService.insertar(estado);
+		esService.insertar(estado);
 		limpiarEstado();
 	}
 	public void listarEstado() {
-		ListaEstado = eService.listar();
+		ListaEstado = esService.listar();
 	}
 	public void limpiarEstado() {
 		this.init();
 	}
 	public void eliminar(Estado estado) {
-		eService.eliminar(estado.getIdEstado());
+		esService.eliminar(estado.getIdEstado());
 		this.listarEstado();
 	}
 

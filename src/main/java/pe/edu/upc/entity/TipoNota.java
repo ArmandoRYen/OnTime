@@ -1,5 +1,6 @@
 package pe.edu.upc.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -12,7 +13,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name="TipoNota")
 
-public class TipoNota {
+public class TipoNota implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

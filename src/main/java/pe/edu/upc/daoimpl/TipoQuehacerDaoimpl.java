@@ -37,7 +37,7 @@ public class TipoQuehacerDaoimpl implements ITipoQuehacerDao, Serializable {
 	public List<TipoQuehacer> listar() {
 		// TODO Auto-generated method stub
 		List <TipoQuehacer> lista = new ArrayList<TipoQuehacer>();
-		Query q = em.createQuery("select m from TipoQuehacer m");
+		Query q = em.createQuery("select tq from TipoQuehacer tq");
 		lista = (List<TipoQuehacer>) q.getResultList();
 		return lista;
 	}

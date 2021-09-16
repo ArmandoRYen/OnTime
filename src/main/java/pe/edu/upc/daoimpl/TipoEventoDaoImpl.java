@@ -1,5 +1,6 @@
 package pe.edu.upc.daoimpl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,9 @@ import javax.transaction.Transactional;
 import pe.edu.upc.dao.ITipoEvento;
 import pe.edu.upc.entity.TipoEvento;
 
-public class TipoEventoDaoImpl implements ITipoEvento {
+public class TipoEventoDaoImpl implements ITipoEvento, Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
@@ -27,7 +30,7 @@ public class TipoEventoDaoImpl implements ITipoEvento {
 	public List<TipoEvento> listar() {
 		
 		List<TipoEvento> lista =new ArrayList<TipoEvento>();
-		Query q =em.createQuery("select m from TipoEvento m");
+		Query q =em.createQuery("select te from TipoEvento te");
 		lista =(List<TipoEvento>) q.getResultList();
 		
 		return lista;

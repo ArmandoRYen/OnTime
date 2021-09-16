@@ -1,5 +1,6 @@
 package pe.edu.upc.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,9 @@ import pe.edu.upc.service.ITipoNotaService;
 
 @Named
 @RequestScoped
-public class TipoNotaController {
+public class TipoNotaController  implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Inject
 	private ITipoNotaService tnService;

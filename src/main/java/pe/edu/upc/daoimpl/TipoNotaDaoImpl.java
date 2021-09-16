@@ -27,7 +27,7 @@ public class TipoNotaDaoImpl implements ITipoNota, Serializable {
 	@Override
 	public List<TipoNota> listar() {
 		List<TipoNota> lista = new ArrayList<TipoNota>();
-		Query q = em.createQuery("select m from TipoNota m");
+		Query q = em.createQuery("select tn from TipoNota tn");
 		lista = (List<TipoNota>) q.getResultList();
 		return lista;
 	}

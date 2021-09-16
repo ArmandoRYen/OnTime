@@ -1,5 +1,6 @@
 package pe.edu.upc.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -12,13 +13,18 @@ import javax.persistence.Table;
 @Entity
 @Table(name="TipoQuehacer")
 
-public class TipoQuehacer {
+public class TipoQuehacer implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idTipoQuehacer;
 	
-	@Column(name="nombreTipoQuehacer", nullable=false, length=30)
+	@Column(name="nombreTipoQuehacer", nullable=false, length=10)
 	private String nombreTipoQuehacer;
 
 	public TipoQuehacer(int idTipoQuehacer, String nombreTipoQuehacer) {

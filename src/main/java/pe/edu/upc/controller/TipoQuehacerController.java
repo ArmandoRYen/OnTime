@@ -1,5 +1,6 @@
 package pe.edu.upc.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +15,12 @@ import pe.edu.upc.service.ITipoQuehacerService;
 
 @Named
 @RequestScoped
-public class TipoQuehacerController {
-
+public class TipoQuehacerController  implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
 	@Inject
-	private ITipoQuehacerService tqhService;
+	private ITipoQuehacerService tqService;
 	private TipoQuehacer tipoquehacer;
 	List<TipoQuehacer> ListaTipoQuehacer;
 	
@@ -28,11 +31,16 @@ public class TipoQuehacerController {
 		this.listar();
 	}
 	public void listar() {
-			ListaTipoQuehacer = tqhService.listar();
+			ListaTipoQuehacer = tqService.listar();
 		}
 	
+	/*	public String nuevaTipoQuehacer() {
+	this.setQuehacer(new TipoQuehacer());
+	return"pagina"
+}*/
+	
 	public void insertar() {
-		tqhService.Insertar(tipoquehacer);
+		tqService.Insertar(tipoquehacer);
 		limpiarTipoQuehacer();
 	}
 	
