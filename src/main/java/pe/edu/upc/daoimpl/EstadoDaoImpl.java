@@ -10,7 +10,6 @@ import javax.transaction.Transactional;
 
 import pe.edu.upc.dao.IEstado;
 import pe.edu.upc.entity.Estado;
-import pe.edu.upc.entity.TipoEvento;
 
 public class EstadoDaoImpl implements IEstado {
 	@PersistenceContext(unitName="pu")
