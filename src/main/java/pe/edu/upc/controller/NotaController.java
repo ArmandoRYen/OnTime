@@ -146,8 +146,4 @@ public class NotaController implements Serializable {
 		this.listaPersonas = listaPersonas;
 	}
 
-
-	
-	
-
 }
