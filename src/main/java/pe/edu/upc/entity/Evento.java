@@ -2,6 +2,7 @@ package pe.edu.upc.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -104,6 +105,26 @@ public class Evento implements Serializable{
 
 	public void setIdPersona(Persona idPersona) {
 		this.idPersona = idPersona;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(descripcionEvento, fechaEvento, idEvento, idPersona, idTipoEvento, nombreEvento);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Evento other = (Evento) obj;
+		return Objects.equals(descripcionEvento, other.descripcionEvento)
+				&& Objects.equals(fechaEvento, other.fechaEvento) && idEvento == other.idEvento
+				&& Objects.equals(idPersona, other.idPersona) && Objects.equals(idTipoEvento, other.idTipoEvento)
+				&& Objects.equals(nombreEvento, other.nombreEvento);
 	}
 	
 	

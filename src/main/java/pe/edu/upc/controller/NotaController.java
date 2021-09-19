@@ -12,8 +12,6 @@ import javax.inject.Named;
 import pe.edu.upc.entity.Nota;
 import pe.edu.upc.service.INotaService;
 
-import pe.edu.upc.entity.TipoNota;
-import pe.edu.upc.service.ITipoNotaService;
 
 import pe.edu.upc.entity.Persona;
 import pe.edu.upc.service.IPersonaService;
@@ -24,8 +22,6 @@ public class NotaController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Inject
-	private ITipoNotaService tnService;
 
 	@Inject
 	private INotaService nService;
@@ -33,8 +29,7 @@ public class NotaController implements Serializable {
 	@Inject
 	private IPersonaService pService;
 
-	private TipoNota tiponota;
-	List<TipoNota> listaTipoNotas;
+
 	
 	private Nota nota;
 	List<Nota> listaNotas;
@@ -44,8 +39,7 @@ public class NotaController implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		this.listaTipoNotas = new ArrayList<TipoNota>();
-		this.tiponota = new TipoNota();
+		
 		
 		this.listaNotas = new ArrayList<Nota>();
 		this.nota = new Nota();
@@ -53,7 +47,7 @@ public class NotaController implements Serializable {
 		this.listaPersonas = new ArrayList<Persona>();
 		this.persona = new Persona();
 
-		this.listarTipoNotas();
+	
 		this.listarNota();
 		this.listarPersona();
 	}
@@ -73,9 +67,7 @@ public class NotaController implements Serializable {
 		this.init();
 	}
 
-	public void listarTipoNotas() {
-		listaTipoNotas = tnService.listar();
-	}
+	
 
 	public void listarNota() {
 		listaNotas = nService.listar();
@@ -96,22 +88,6 @@ public class NotaController implements Serializable {
 	public void eliminar(Nota nota) {
 		nService.eliminar(nota.getIdNota());
 		this.listarNota();
-	}
-
-	public TipoNota getTiponota() {
-		return tiponota;
-	}
-
-	public void setTiponota(TipoNota tiponota) {
-		this.tiponota = tiponota;
-	}
-
-	public List<TipoNota> getListaTipoNotas() {
-		return listaTipoNotas;
-	}
-
-	public void setListaTipoNotas(List<TipoNota> listaTipoNotas) {
-		this.listaTipoNotas = listaTipoNotas;
 	}
 
 	public Nota getNota() {
@@ -145,5 +121,9 @@ public class NotaController implements Serializable {
 	public void setListaPersonas(List<Persona> listaPersonas) {
 		this.listaPersonas = listaPersonas;
 	}
+
+	
+
+	
 
 }
