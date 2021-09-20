@@ -33,7 +33,7 @@ private static final long serialVersionUID = 1L;
 	@Override
 	public List<Pendiente> listar() {
 		List<Pendiente> lista = new ArrayList<Pendiente>();
-		Query q = em.createQuery("select qh from Quehacer qh");
+		Query q = em.createQuery("select qh from Pendiente qh");
 		lista =(List<Pendiente>) q.getResultList();
 		return lista;
 	}
