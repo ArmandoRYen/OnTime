@@ -30,17 +30,26 @@ public class Persona implements Serializable{
 	
 	@Column(name="contraseñaPersona", nullable=false, length=20)
 	private String contraseñaPersona;
+	
+	@Column(name="tipoPersona", nullable=false)
+	private char tipoPersona;
+	
+	@Column(name="sueldoPersona")
+	private float sueldoPersona;
 
 	public Persona() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Persona(int idPersona, String nombrePersona, String contraseñaPersona) {
+	public Persona(int idPersona, String nombrePersona, String contraseñaPersona, char tipoPersona,
+			float sueldoPersona) {
 		super();
 		this.idPersona = idPersona;
 		this.nombrePersona = nombrePersona;
 		this.contraseñaPersona = contraseñaPersona;
+		this.tipoPersona = tipoPersona;
+		this.sueldoPersona = sueldoPersona;
 	}
 
 	public int getIdPersona() {
@@ -67,9 +76,25 @@ public class Persona implements Serializable{
 		this.contraseñaPersona = contraseñaPersona;
 	}
 
+	public char getTipoPersona() {
+		return tipoPersona;
+	}
+
+	public void setTipoPersona(char tipoPersona) {
+		this.tipoPersona = tipoPersona;
+	}
+
+	public float getSueldoPersona() {
+		return sueldoPersona;
+	}
+
+	public void setSueldoPersona(float sueldoPersona) {
+		this.sueldoPersona = sueldoPersona;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(contraseñaPersona, idPersona, nombrePersona);
+		return Objects.hash(contraseñaPersona, idPersona, nombrePersona, sueldoPersona, tipoPersona);
 	}
 
 	@Override
@@ -82,7 +107,11 @@ public class Persona implements Serializable{
 			return false;
 		Persona other = (Persona) obj;
 		return Objects.equals(contraseñaPersona, other.contraseñaPersona) && idPersona == other.idPersona
-				&& Objects.equals(nombrePersona, other.nombrePersona);
+				&& Objects.equals(nombrePersona, other.nombrePersona)
+				&& Float.floatToIntBits(sueldoPersona) == Float.floatToIntBits(other.sueldoPersona)
+				&& tipoPersona == other.tipoPersona;
 	}
 
+	
+	
 }
