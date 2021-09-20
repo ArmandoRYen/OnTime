@@ -4,7 +4,7 @@ import java.util.List;
 
 import pe.edu.upc.entity.Persona;
 
-public interface IPersona {
+public interface IPersonaDao {
 	public void insertar(Persona persona);
 	public List<Persona>listar();
 	public void eliminar(int idPersona);

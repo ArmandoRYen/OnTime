@@ -9,10 +9,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.dao.IEvento;
+import pe.edu.upc.dao.IEventoDao;
 import pe.edu.upc.entity.Evento;
 
-public class EventoDaoImpl implements IEvento, Serializable {
+public class EventoDaoImpl implements IEventoDao, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	

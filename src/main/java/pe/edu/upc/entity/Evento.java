@@ -34,6 +34,9 @@ public class Evento implements Serializable{
 	
 	@Column(name="fechaEvento", nullable=false)
 	private Date fechaEvento;
+	
+	@Column(name="complejidadEvento", nullable=false)
+	private int complejidadEvento;
 
 	@ManyToOne
 	@JoinColumn(name="idTipoEvento", nullable=false)
@@ -48,13 +51,14 @@ public class Evento implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Evento(int idEvento, String nombreEvento, String descripcionEvento, Date fechaEvento,
+	public Evento(int idEvento, String nombreEvento, String descripcionEvento, Date fechaEvento, int complejidadEvento,
 			TipoEvento idTipoEvento, Persona idPersona) {
 		super();
 		this.idEvento = idEvento;
 		this.nombreEvento = nombreEvento;
 		this.descripcionEvento = descripcionEvento;
 		this.fechaEvento = fechaEvento;
+		this.complejidadEvento = complejidadEvento;
 		this.idTipoEvento = idTipoEvento;
 		this.idPersona = idPersona;
 	}
@@ -91,6 +95,14 @@ public class Evento implements Serializable{
 		this.fechaEvento = fechaEvento;
 	}
 
+	public int getComplejidadEvento() {
+		return complejidadEvento;
+	}
+
+	public void setComplejidadEvento(int complejidadEvento) {
+		this.complejidadEvento = complejidadEvento;
+	}
+
 	public TipoEvento getIdTipoEvento() {
 		return idTipoEvento;
 	}
@@ -109,7 +121,8 @@ public class Evento implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(descripcionEvento, fechaEvento, idEvento, idPersona, idTipoEvento, nombreEvento);
+		return Objects.hash(complejidadEvento, descripcionEvento, fechaEvento, idEvento, idPersona, idTipoEvento,
+				nombreEvento);
 	}
 
 	@Override
@@ -121,11 +134,13 @@ public class Evento implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Evento other = (Evento) obj;
-		return Objects.equals(descripcionEvento, other.descripcionEvento)
+		return complejidadEvento == other.complejidadEvento
+				&& Objects.equals(descripcionEvento, other.descripcionEvento)
 				&& Objects.equals(fechaEvento, other.fechaEvento) && idEvento == other.idEvento
 				&& Objects.equals(idPersona, other.idPersona) && Objects.equals(idTipoEvento, other.idTipoEvento)
 				&& Objects.equals(nombreEvento, other.nombreEvento);
 	}
+
 	
 	
 }

@@ -7,7 +7,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import pe.edu.upc.dao.IEstado;
+import pe.edu.upc.dao.IEstadoDao;
 import pe.edu.upc.entity.Estado;
 import pe.edu.upc.entity.Pendiente;
 import pe.edu.upc.entity.Persona;
@@ -34,7 +34,7 @@ public class PendienteController implements Serializable {
 	List<Persona> listaPersonas;
 	
 	@Inject
-	private IEstado eService;
+	private IEstadoDao eService;
 	
 	private Estado estado;
 	List<Estado> listaestado;

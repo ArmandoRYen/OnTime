@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import pe.edu.upc.dao.ITipoEvento;
+import pe.edu.upc.dao.ITipoEventoDao;
 import pe.edu.upc.entity.TipoEvento;
 import pe.edu.upc.service.ITipoEventoService;
 
@@ -14,7 +14,7 @@ public class TipoEventoServiceImpl implements ITipoEventoService, Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private ITipoEvento teD;
+	private ITipoEventoDao teD;
 
 	@Override
 	public void insertar(TipoEvento tipoevento) {

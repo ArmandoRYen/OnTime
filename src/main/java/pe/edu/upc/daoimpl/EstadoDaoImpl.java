@@ -9,10 +9,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.dao.IEstado;
+import pe.edu.upc.dao.IEstadoDao;
 import pe.edu.upc.entity.Estado;
 
-public class EstadoDaoImpl implements IEstado, Serializable {
+public class EstadoDaoImpl implements IEstadoDao, Serializable {
 	
 		private static final long serialVersionUID = 1L;
 	

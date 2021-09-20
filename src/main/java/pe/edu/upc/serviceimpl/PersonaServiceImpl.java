@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import pe.edu.upc.dao.IPersona;
+import pe.edu.upc.dao.IPersonaDao;
 import pe.edu.upc.entity.Persona;
 import pe.edu.upc.service.IPersonaService;
 
@@ -15,7 +15,7 @@ public class PersonaServiceImpl implements IPersonaService, Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private IPersona pD;
+	private IPersonaDao pD;
 
 	@Override
 	public void insertar(Persona persona) {

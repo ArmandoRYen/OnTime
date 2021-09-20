@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import pe.edu.upc.dao.IPendienteDao;
 import pe.edu.upc.service.IPendienteService;
 import pe.edu.upc.entity.Pendiente;
 
@@ -13,7 +14,7 @@ public class PendienteServiceImpl implements IPendienteService, Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private IPendienteService pD;
+	private IPendienteDao pD;
 	
 	@Override
 	public void insertar(Pendiente pendiente) {

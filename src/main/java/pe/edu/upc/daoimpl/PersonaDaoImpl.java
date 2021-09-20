@@ -9,10 +9,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.dao.IPersona;
+import pe.edu.upc.dao.IPersonaDao;
 import pe.edu.upc.entity.Persona;
 
-public class PersonaDaoImpl implements IPersona, Serializable {
+public class PersonaDaoImpl implements IPersonaDao, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	

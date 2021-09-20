@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import pe.edu.upc.dao.IEstado;
+import pe.edu.upc.dao.IEstadoDao;
 import pe.edu.upc.entity.Estado;
 import pe.edu.upc.service.IEstadoService;
 
@@ -15,7 +15,7 @@ public class EstadoServiceImpl implements IEstadoService, Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private IEstado esD;
+	private IEstadoDao esD;
 
 	@Override
 	public void insertar(Estado estado) {

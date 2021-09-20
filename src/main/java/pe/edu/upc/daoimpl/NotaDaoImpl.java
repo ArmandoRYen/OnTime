@@ -9,10 +9,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.dao.INota;
+import pe.edu.upc.dao.INotaDao;
 import pe.edu.upc.entity.Nota;
 
-public class NotaDaoImpl implements INota, Serializable {
+public class NotaDaoImpl implements INotaDao, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
