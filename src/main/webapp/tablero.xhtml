@@ -4,14 +4,15 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	
+
 <head>
 
-	<style>
-	
-		.show {top: 0}
-	</style>
-</head>	
+<style>
+.show {
+	top: 0
+}
+</style>
+</head>
 <ui:composition template="master.xhtml">
 
 	<ui:define name="content">
@@ -20,25 +21,72 @@
 			data-bs-target="#exampleModal">Notificacionesaa</button>
 
 		<!-- Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style ="show: top: 0">
+		<div class="modal fade" id="exampleModal" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Agregar Notificaciones</h5>
+						<h5 class="modal-title" id="exampleModalLabel">Agregar
+							Notificaciones</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
-						<form>
-							<label for="fname">Día:</label><br /> <input type="text"
-								id="fname" name="fname" /><br /> <label for="lname">Objeto:</label><br /> <input type="text" id="lname" name="lname"/><br/>
-							<label for="lname">Tipo evento:</label><br /> <input type="text" id="lnam" name="lnam" />
-						</form>
+
+						<h:form>
+
+							<div class="row">
+
+								<div class="col">
+									<label for="fname">Día:</label><br /> <input type="text"
+										id="fname" name="fname" /><br /> <label for="lname">Objeto:</label><br />
+									<input type="text" id="lname" name="lname" /><br /> <label
+										for="lname">Tipo evento:</label><br /> <input type="text"
+										id="lnam" name="lnam" /><br />
+
+								</div>
+
+
+								<div class="col">
+
+
+									<label for="dname1" class="hlabels">Dias:</label><br />
+
+
+									<div class="row">
+										<div class="col">
+											<input type="checkbox" id="dia1" name="dia1" value="Lunes" />
+											<label for="dname2" class="hlabels"> Lu</label>
+											<input type="checkbox" id="dia2" name="dia2" value="Martes" /> 
+											<label for="dname3" class="hlabels"> Ma</label>
+											<input type="checkbox" id="dia3" name="dia3" value="Miercoles" /> 
+											<label for="dname4" class="hlabels"> Mi</label>
+
+											<input type="checkbox" id="dia4" name="dia4" value="Jueves" />
+											<label for="dname5" class="hlabels"> Ju</label><br/>
+											<input type="checkbox" id="dia5" name="dia5" value="Viernes" /> 
+											<label for="dname6" class="hlabels"> Vi</label>
+											<input type="checkbox" id="dia6" name="dia6" value="Sabado" /> 
+											<label for="dname7" class="hlabels"> Sa</label>
+											<input type="checkbox" id="dia7" name="dia7" value="Domingo" /> 
+											<label for="dname8" class="hlabels"> Do</label>
+
+										</div>
+
+									</div>
+
+
+								</div>
+
+							</div>
+
+						</h:form>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-bs-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
+						<button type="button" class="btn btn-primary">Save
+							changes</button>
 					</div>
 				</div>
 			</div>

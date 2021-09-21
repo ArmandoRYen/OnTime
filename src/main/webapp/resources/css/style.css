@@ -178,6 +178,14 @@ a {
     background-color: var(--naranja-color)
 }
 
+.hlabels {
+    color: gray;
+    font-size: 1rem
+}
+.modal-title{
+	font-weight: bold; 
+}
+
 @media screen and (min-width: 768px) {
     body {
         margin: calc(var(--header-height) + 1rem) 0 0 0;
