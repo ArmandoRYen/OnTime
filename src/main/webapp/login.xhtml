@@ -32,10 +32,8 @@
                 <div class="input-wrap">
                   <input
                     type="text"
-                    minlength="4"
                     class="input-field"
                     autocomplete="off"
-                    required = "true"
                   />
                   <label>Name</label>
                 </div>
@@ -43,16 +41,17 @@
                 <div class="input-wrap">
                   <input
                     type="password"
-                    minlength="4"
                     class="input-field"
                     autocomplete="off"
-                    required = "true"
                   />
                   <label>Password</label>
                 </div>
-
-                <input type="submit" value="Sign In" class="sign-btn" />
-
+	
+			<div>
+                <a href="master.xhtml">
+                 <input type="button" value="Sign In" class="sign-btn" /> </a>              
+              </div>
+                
                 <p class="text">
                   Contraseña olvidada o datos olvidados ?
                   <a href="#">Get help</a> signing in
@@ -67,7 +66,7 @@
               </div>
 
               <div class="heading">
-                <h2>Empieza con ONTIME</h2>
+                <h2>Empieza YA!</h2>
                 <h6>Ya tienes una cuenta?</h6>
                 <a href="#" class="toggle"> Sign in </a>
               </div>
@@ -81,17 +80,29 @@
                     autocomplete="off"
                     required = "true"
                   />
-                  <label>Name</label>
+                  <label>Nombre</label>
                 </div>
 
-                <div class="input-wrap">
+                <div>
+                  
+                  	<div> 
+                  	<input type="checkbox" id="dia1" name="dia1" value="Lunes" />
+                  	<input type="checkbox" id="tipo2" name="tipo2" value="Lunes" style="padding: 29rem"/><br/>
+					<p style="color: gray;">Adulto          Joven</p>
+
+                  	</div>
+					
+					
+				</div>
+				<div class="input-wrap">
                   <input
-                    type="email"
+                    type="password"
+                    minlength="4"
                     class="input-field"
                     autocomplete="off"
                     required = "true"
                   />
-                  <label>Email</label>
+                  <label>Sueldo</label>
                 </div>
 
                 <div class="input-wrap">
@@ -105,8 +116,10 @@
                   <label>Password</label>
                 </div>
 
-                <input type="submit" value="Sign Up" class="sign-btn" />
-
+                <input type="button" value="Sign Up" class="sign-btn" />
+                			<p:commandButton value="Nuevo"						
+							action="#{motorController.nuevoMotor()}"
+							styleClass="sign-btn color: white" />
                 <p class="text">
                   Al registrarse, estoy de acuerdo con
                   <a href="#">Términos de servicio</a> and

@@ -26,7 +26,8 @@ body {
     padding: 0 1rem;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
-    transition: .5s
+    transition: .5s;
+    background-color: #F5F5F5;
 }
 
 a {
@@ -47,7 +48,6 @@ a {
     z-index: var(--z-fixed);
     transition: .5s
 }
-
 
 
 .header_toggle {
@@ -164,7 +164,13 @@ a {
 .body-pd {
     padding-left: calc(var(--nav-width) + 1rem)
 }
-
+.midiv{
+	
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: white;
+  padding: .7rem;
+  margin: 1rem;
+}
 .active {
     color: var(--naranja-color)
 }
