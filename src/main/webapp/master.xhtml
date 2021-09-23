@@ -13,6 +13,60 @@ xmlns:p="http://primefaces.org/ui">
     <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet" />
     <script type="text/javascript" src=""></script>
     <link rel="stylesheet" href="resources/css/style.css" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      
+      <script type="text/javascript">
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+       var data =  google.visualization.arrayToDataTable([
+         ['TipoEvento', 'Cantidad', { role: 'style' }],
+         ['Ingles', 1, '#b87333'],            // RGB value
+         ['FAE', 10, 'silver'],            // English color name
+         ['Progra', 5, 'gold'],
+         ['D', 21, 'color: #e5e4e2' ],
+         ['C', 21, 'color: #e5e4e2' ], // CSS-style declaration
+         ['B', 21, 'color: #e5e4e2' ], // CSS-style declaration
+         ['A', 21, 'color: #e5e4e2' ], // CSS-style declaration
+ // CSS-style declaration
+      ]);
+      
+    var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+                       
+      var options = {
+      	width: 400,
+        title: 'Numero de eventos',
+        legend: { position: 'none' },
+        chartArea: {
+            // leave room for y-axis labels
+            width: '70%'},
+            
+          bar: { groupWidth: "50%" },
+        hAxis: {
+          title: 'Eventos',
+                   gridlines: {
+          color: 'transparent'
+          },
+         	textPosition: 'none',     
+    }  
+      };
+
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+      chart.draw(view, options);
+    }
+    
+</script>   
+    
 </h:head>
 
 <h:body oncontextmenu="return false" class="snippet-body" id="body-pd">

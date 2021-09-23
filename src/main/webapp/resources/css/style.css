@@ -171,9 +171,17 @@ a {
   padding: .7rem;
   margin: 1rem;
 }
+.chardiv {
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  	background-color: white;
+    margin: 1rem;
+  	min-height: 33rem 
+}
+
 .active {
     color: var(--naranja-color)
 }
+
 
 .active::before {
     content: '';

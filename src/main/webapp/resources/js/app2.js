@@ -39,46 +39,4 @@ document.addEventListener("DOMContentLoaded", function (event) {
   
   
   //
-  
 
-/*===== 
-google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(drawBasic);
-
-function drawBasic() {
-
-       var data = google.visualization.arrayToDataTable([
-         ['TipoEvento', 'Cantidad', { role: 'style' }],
-         ['Ingles', 1, '#b87333'],            // RGB value
-         ['FAE', 10, 'silver'],            // English color name
-         ['Progra', 5, 'gold'],
-         ['Redes', 21, 'color: #e5e4e2' ], // CSS-style declaration
-      ]);
-      
-    var view = new google.visualization.DataView(data);
-      view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" },
-                       2]);
-                       
-      var options = {
-      	width: 700,
-        title: 'Numero de eventos',
-        legend: { position: 'none' },
-          bar: { groupWidth: "50%" },
-        hAxis: {
-          title: 'Eventos',
-                   gridlines: {
-          color: 'transparent'
-          },
-         	textPosition: 'none',     
-    }  
-      };
-
-      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-
-      chart.draw(view, options);
-    }
-=====*/
