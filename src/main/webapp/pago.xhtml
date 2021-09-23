@@ -6,14 +6,14 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<head>
+<h>
 
 <style>
 .show {
 	top: 0
 }
 </style>
-</head>
+</h>
 <ui:composition template="master.xhtml">
 	<ui:define name="content">
 		<div class="container">
@@ -46,6 +46,57 @@
 				</div>
 			</div>
 
+
+		</div>
+		<div class="modal fade" id="exampleModal" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Agregar
+							Pago</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+
+						<h:form>
+
+							<div class="row">
+
+								<div class="col">
+									<label for="Aname">Nombre del acreedor:</label><br /> <input type="text"
+										id="Aname" name="Aname" /><br /> <label for="Mname">Monto:</label><br />
+									<input type="text" id="Mname" name="Mname" /><br /> 
+										
+								</div>
+								<div class="col">
+									<label
+										for="Fname">Fecha:</label><br /> 
+										
+										<div class="input-group date">
+											<input type="text" class="form-control"><spam class="input-group-addon">
+												<i class="glyphicon glyphicon-th"></i>
+											</spam>
+											</input>
+										
+										</div>
+										
+								
+								</div>
+
+							</div>
+
+						</h:form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save
+							changes</button>
+					</div>
+				</div>
+			</div>
 		</div>
 
 
