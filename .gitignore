@@ -12,3 +12,5 @@ target/m2e-wtp/web-resources/META-INF/maven/pe.edu.upc/OnTime/pom.properties
 *.xml
 *.component
 target/m2e-wtp/web-resources/META-INF/maven/pe.edu.upc/OnTime/pom.properties
+.classpath
+.settings/org.eclipse.jdt.core.prefs
