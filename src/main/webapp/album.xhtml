@@ -1,0 +1,73 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h>
+
+<style>
+.show {
+	top: 0
+}
+</style>
+</h>
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<div class="container">
+			<div class="row">
+				<div class="midiv">
+
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-primary"
+						data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar</button>
+				</div>
+			</div>
+			<h:form>
+				<div class="row">
+					<div class="midiv">
+						<div class="contenedor mb-5 mt-3">
+							<div class="table table-striped table-bordered mydatatable ">
+								<p:dataTable emptyMessage="No existen registros"
+									rowIndexVar="item">
+
+									<p:column headerText="Nombre">
+										<h:outputText />
+									</p:column>
+									<p:column headerText="Tipo de Evento">
+										<h:outputText />
+									</p:column>
+									<p:column headerText="Imagen">
+										<h:outputText />
+									</p:column>
+
+									<p:column headerText="Acciones">
+										<h:outputText />
+									</p:column>
+
+								</p:dataTable>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				
+
+
+			</h:form>
+			</div>
+	</ui:define>
+
+
+
+
+</ui:composition>
+
+
+
+
+
+</html>
