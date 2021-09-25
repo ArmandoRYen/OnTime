@@ -25,9 +25,7 @@ public class Foto implements Serializable {
 	@Column(name="nombreFoto", nullable=false, length=20)
 	private String nombreFoto;
 	
-	@Column(name="Imagen")
-	@Lob
-	private byte[] Imagen;
+	private String image;
 	
 	@ManyToOne
 	@JoinColumn(name="idTipoEvento", nullable=false)
@@ -38,11 +36,11 @@ public class Foto implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Foto(int idFoto, String nombreFoto, byte[] imagen, TipoEvento idTipoEvento) {
+	public Foto(int idFoto, String nombreFoto, String image, TipoEvento idTipoEvento) {
 		super();
 		this.idFoto = idFoto;
 		this.nombreFoto = nombreFoto;
-		Imagen = imagen;
+		this.image = image;
 		this.idTipoEvento = idTipoEvento;
 	}
 
@@ -62,12 +60,12 @@ public class Foto implements Serializable {
 		this.nombreFoto = nombreFoto;
 	}
 
-	public byte[] getImagen() {
-		return Imagen;
+	public String getImage() {
+		return image;
 	}
 
-	public void setImagen(byte[] imagen) {
-		Imagen = imagen;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public TipoEvento getIdTipoEvento() {
@@ -77,6 +75,8 @@ public class Foto implements Serializable {
 	public void setIdTipoEvento(TipoEvento idTipoEvento) {
 		this.idTipoEvento = idTipoEvento;
 	}
+
+	
 	
 	
 

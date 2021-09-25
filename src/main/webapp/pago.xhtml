@@ -31,23 +31,23 @@
 					<div class="midiv">
 						<div class="contenedor mb-5 mt-3">
 							<div class="table table-striped table-bordered mydatatable ">
-								<p:dataTable 
-									emptyMessage="No existen registros" rowIndexVar="item">
+								<p:dataTable emptyMessage="No existen registros"
+									rowIndexVar="item">
 
-									<p:column headerText="Acreedor"  >
-										<h:outputText  />
+									<p:column headerText="Acreedor">
+										<h:outputText />
 									</p:column>
-									<p:column headerText="Monto" >
-										<h:outputText  />
+									<p:column headerText="Monto">
+										<h:outputText />
 									</p:column>
-									<p:column headerText="Fecha"  >
-										<h:outputText  />
+									<p:column headerText="Fecha">
+										<h:outputText />
 									</p:column>
-									<p:column headerText="Saldo"  >
-										<h:outputText  />
+									<p:column headerText="Saldo">
+										<h:outputText />
 									</p:column>
-									<p:column headerText="Acciones"  >
-										<h:outputText  />
+									<p:column headerText="Acciones">
+										<h:outputText />
 									</p:column>
 
 								</p:dataTable>
@@ -87,11 +87,11 @@
 								<div class="col">
 									<label for="Fname">Fecha:</label><br />
 
-									<div class="input-group date">
-										<input type="date" class="form-control"><spam
-												class="input-group-addon"> <i
-												class="glyphicon glyphicon-th"></i> </spam> </input>
-
+									<div class="input-group date ">
+										<p:datePicker  pattern="dd/MM/yyyy"
+											  type="calendar"
+											timeZone="UTC" required="true" >
+										</p:datePicker>
 									</div>
 
 
