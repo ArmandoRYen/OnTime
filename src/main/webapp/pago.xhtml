@@ -62,6 +62,7 @@
 
 
 		</div>
+		
 		<div class="modal fade" id="exampleModal" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered">
@@ -78,34 +79,27 @@
 							<div class="row">
 
 								<div class="col">
-									<label for="Aname">Nombre del acreedor:</label><br /> <input
-										type="text" id="Aname" name="Aname" /><br /> <label
-										for="Mname">Monto:</label><br /> <input type="text"
-										id="Mname" name="Mname" /><br />
+									<h:outputLabel for="Aname" value = "nombre del acredor"/><br /> 
+									<p:inputText type="text" id="Aname" name="Aname" /><br /> 
+									<h:outputLabel for="Mname" value="monto"/> <br /> 
+									<p:inputText type="text" id="Mname" name="Mname" /><br />
 
 								</div>
 								<div class="col">
-									<label for="Fname">Fecha:</label><br />
-
+									<h:outputLabel for="Fname" value ="Fecha"/><br />
 									<div class="input-group date ">
 										<p:datePicker  pattern="dd/MM/yyyy"
 											  type="calendar"
 											timeZone="UTC" required="true" >
 										</p:datePicker>
 									</div>
-
-
 								</div>
-
 							</div>
-
 						</h:form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save
-							changes</button>
+						<h:commandButton type="button" styleClass="btn btn-secondary" action="" value ="cerrar"/>
+						<p:commandButton type="button" styleClass="btn btn-primary" value="Save changes"/>
 					</div>
 				</div>
 			</div>

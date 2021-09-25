@@ -12,9 +12,8 @@
 	<div class="row">
 	    	<div class ="midiv">
 
-				<!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-					data-bs-target="#exampleModal">Notificacionesaa</button>
+			   <p:commandButton value="Agregar" type="button" styleClass="btn btn-secondary" onclick="PF('dlg2').show();" />		    	    
+
 	    </div>
 	</div>
 	<div class="row">
@@ -32,30 +31,17 @@
 	</div>
 	
 	</div>
-
-		<!-- Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Agregar
-							Notificaciones</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-
-						<h:form>
-
+	<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="30rem">
+    				<h:outputText value="Ingrese prueba" />    				
+    				<h:form>
 							<div class="row">
-
 								<div class="col">
-									<label for="fname">Día:</label><br /> <input type="text"
-										id="fname" name="fname" /><br /> <label for="lname">Objeto:</label><br />
-									<input type="text" id="lname" name="lname" /><br /> <label
-										for="lname">Tipo evento:</label><br /> <input type="text"
-										id="lnam" name="lnam" /><br />
+									<h:outputLabel for="fname" value="Nombre de la notificación" /><br /> 
+									<p:inputText type="text" id="fname" name="fname" /><br /> 
+									<h:outputLabel for="lname" value="Hora"/><br />
+									<p:inputText type="text" id="lname" name="lname" /><br /> 
+									<h:outputLabel for="lname" value="Evento"/><br /> 
+										<p:inputText type="text" id="lnam" name="lnam" /><br />
 
 								</div>
 
@@ -64,8 +50,7 @@
 
 
 									<label for="dname1" class="hlabels">Dias:</label><br />
-
-
+									
 									<div class="row">
 										<div class="col">
 											<input type="checkbox" id="dia1" name="dia1" value="Lunes" />
@@ -83,27 +68,18 @@
 											<label for="dname7" class="hlabels"> Sa</label>
 											<input type="checkbox" id="dia7" name="dia7" value="Domingo" /> 
 											<label for="dname8" class="hlabels"> Do</label>
-
-										</div>
-
-									</div>
-
-
+									
+									
 								</div>
-
 							</div>
-
+							</div>		
+							</div>
 						</h:form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save
-							changes</button>
-					</div>
-				</div>
-			</div>
-		</div>
+    				
+					</p:dialog> 
+
+
+						
 	</ui:define>
 </ui:composition>
 </html>

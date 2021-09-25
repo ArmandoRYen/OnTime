@@ -169,10 +169,12 @@ label {
   font-size: 0.75rem;
   top: -2px;
 }
+
 .hlabels {
     color: gray;
     font-size: 1rem
 }
+
 .sign-btn {
   display: inline-block;
   width: 100%;
@@ -186,9 +188,6 @@ label {
   margin-bottom: 2rem;
   transition: 0.3s;
 }
-
-
-
 
 .sign-btn:hover {
   background-color: #8371fd;
