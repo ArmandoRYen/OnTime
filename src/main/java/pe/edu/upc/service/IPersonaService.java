@@ -8,5 +8,5 @@ public interface IPersonaService {
 	public void insertar (Persona persona);
 	public List<Persona> listar();
 	public void eliminar (int persona);
-
+	public Persona comprobarLogin(Persona persona);
 }
