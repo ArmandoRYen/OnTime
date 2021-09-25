@@ -15,19 +15,56 @@
      			    </div>
 		    	<div class="col-7">
 		    	   <div class ="midiv">
-		    	   NOTAS
-		    	   <br>Ingresar BLALBLABLABLALBA </br>
-					<br>Ingresar BLALBLABLABLALBA </br>			
-					<br>Ingresar BLALBLABLABLALBA </br>
-					<br>Ingresar BLALBLABLABLALBA </br>
-					<br>Ingresar BLALBLABLABLALBA </br>			
-					<br>Ingresar BLALBLABLABLALBA </br> 
+		    	   
+		    	   <h:form>
+				<div class="row">
+					<div class="col"><p:commandButton value="Agregar" type="button" styleClass="btn btn-secondary" onclick="PF('dlg2').show();" />	 </div>	    	    					
+						<div class="contenedor mb-5 mt-3" >
+							<div class="table table-striped table-bordered mydatatable">
+								<p:dataTable emptyMessage="No existen registros"
+									rowIndexVar="item" >
+
+									<p:column headerText="Tipo de Evento">
+										<h:outputText />
+									</p:column>
+									
+								</p:dataTable>
+
+							</div>
+						</div>
+				</div>
+
+
+			</h:form>
 		    	   </div>	    	
 		    	</div>
     
   </div>
 	</div>
-			
+			<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="30rem">
+    				<h:outputText value="Ingrese prueba" />    				
+    				<h:form>
+							<div class="row">
+								<div class="col">
+									<h:outputLabel for="Aname" value = "Tipo de evento"/><br /> 
+									<p:inputText type="text" id="Aname" name="Aname" /><br /> 
+									<h:outputLabel for="Mname" value="Color"/> <br /> 
+									<p:inputText type="text" id="Mname" name="Mname" /><br />
+
+								</div>
+								<div class="col">
+									<h:outputLabel for="Fname" value ="Fecha"/><br />
+									<div class="input-group date ">
+										<p:datePicker  pattern="dd/MM/yyyy"
+											  type="calendar"
+											timeZone="UTC" required="true" >
+										</p:datePicker>
+									</div>
+								</div>
+							</div>
+						</h:form>
+    				
+					</p:dialog>
 		
 	</ui:define>
 </ui:composition>

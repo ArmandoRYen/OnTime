@@ -31,8 +31,7 @@
 	</div>
 	
 	</div>
-	<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="30rem">
-    				<h:outputText value="Ingrese prueba" />    				
+	<p:dialog header="Agregar Notificacion" widgetVar="dlg2" modal="true" height="30rem" width="40rem">
     				<h:form>
 							<div class="row">
 								<div class="col">
@@ -40,8 +39,8 @@
 									<p:inputText type="text" id="fname" name="fname" /><br /> 
 									<h:outputLabel for="lname" value="Hora"/><br />
 									<p:inputText type="text" id="lname" name="lname" /><br /> 
-									<h:outputLabel for="lname" value="Evento"/><br /> 
-										<p:inputText type="text" id="lnam" name="lnam" /><br />
+									<h:outputLabel for="lname2" value="Evento"/><br /> 
+									<p:inputText type="text" id="lname2" name="lname2" /><br />
 
 								</div>
 
@@ -53,23 +52,47 @@
 									
 									<div class="row">
 										<div class="col">
-											<input type="checkbox" id="dia1" name="dia1" value="Lunes" />
-											<label for="dname2" class="hlabels"> Lu</label>
-											<input type="checkbox" id="dia2" name="dia2" value="Martes" /> 
-											<label for="dname3" class="hlabels"> Ma</label>
-											<input type="checkbox" id="dia3" name="dia3" value="Miercoles" /> 
-											<label for="dname4" class="hlabels"> Mi</label>
-
-											<input type="checkbox" id="dia4" name="dia4" value="Jueves" />
-											<label for="dname5" class="hlabels"> Ju</label><br/>
-											<input type="checkbox" id="dia5" name="dia5" value="Viernes" /> 
-											<label for="dname6" class="hlabels"> Vi</label>
-											<input type="checkbox" id="dia6" name="dia6" value="Sabado" /> 
-											<label for="dname7" class="hlabels"> Sa</label>
-											<input type="checkbox" id="dia7" name="dia7" value="Domingo" /> 
-											<label for="dname8" class="hlabels"> Do</label>
-									
-									
+											<p:selectManyCheckbox id="custom" value="#{checkboxView.selectedConsoles2}" layout="custom">
+    											<f:selectItem itemLabel="LU" itemValue="LU" />
+    											<f:selectItem itemLabel="MA" itemValue="MA" />
+    											<f:selectItem itemLabel="MI" itemValue="MI" />
+    											<f:selectItem itemLabel="JU" itemValue="JU" />
+    											<f:selectItem itemLabel="VI" itemValue="VI" />
+    											<f:selectItem itemLabel="SA" itemValue="SA" />
+    											<f:selectItem itemLabel="DO" itemValue="DO" />   								
+											</p:selectManyCheckbox>
+											<div class="ui-grid ui-grid-responsive">
+ 											<div class="ui-grid-row">
+        									<div class="ui-grid-col-6">
+            								<p:outputLabel for="opt1" value="LU" style="display:block"/>
+            								<p:checkbox id="opt1" for="custom" itemIndex="0" />
+        									</div>
+								        	<div class="ui-grid-col-6">
+								            <p:outputLabel for="opt2" value="MA" style="display:block"/>
+								            <p:checkbox id="opt2" for="custom" itemIndex="1" />
+									        </div>
+									        <div class="ui-grid-col-6">
+            								<p:outputLabel for="opt3" value="MI" style="display:block"/>
+            								<p:checkbox id="opt3" for="custom" itemIndex="2" />
+        									</div>
+								        	<div class="ui-grid-col-6">
+								            <p:outputLabel for="opt4" value="JU" style="display:block"/>
+								            <p:checkbox id="opt4" for="custom" itemIndex="3" />
+									        </div>
+									        <div class="ui-grid-col-6">
+            								<p:outputLabel for="opt5" value="VI" style="display:block"/>
+            								<p:checkbox id="opt5" for="custom" itemIndex="4" />
+        									</div>
+								        	<div class="ui-grid-col-6">
+								            <p:outputLabel for="opt6" value="SA" style="display:block"/>
+								            <p:checkbox id="opt6" for="custom" itemIndex="5" />
+									        </div>
+									        <div class="ui-grid-col-6">
+								            <p:outputLabel for="opt7" value="DO" style="display:block"/>
+								            <p:checkbox id="opt7" for="custom" itemIndex="6" />
+									        </div>
+									    	</div>
+											</div>							
 								</div>
 							</div>
 							</div>		
