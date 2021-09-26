@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 
 import pe.edu.upc.dao.IEventoDao;
 import pe.edu.upc.entity.Evento;
+import pe.edu.upc.entity.TipoEvento;
 
 public class EventoDaoImpl implements IEventoDao, Serializable {
 	
@@ -40,6 +41,16 @@ public class EventoDaoImpl implements IEventoDao, Serializable {
 		Evento evento = new Evento();
 		evento = em.getReference(Evento.class, idEvento);
 		em.remove(evento);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Evento> listarPorNombrePersona(String nombre) {
+		List<Evento> lista =new ArrayList<Evento>();
+		Query q =em.createQuery("select ev from Evento ev where ev.persona.nombrePersona like ?1");
+		q.setParameter(1, "%" + nombre + "%");
+		lista =(List<Evento>) q.getResultList();
+		return lista;
 	}
 
 }

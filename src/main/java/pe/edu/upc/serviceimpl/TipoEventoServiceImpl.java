@@ -27,6 +27,11 @@ public class TipoEventoServiceImpl implements ITipoEventoService, Serializable{
 	
 		return teD.listar();
 	}
+	
+	@Override
+	public List<TipoEvento> listarPorNombre(String nombre) {
+		return teD.listarPorNombrePersona(nombre);
+	}
 
 	@Override
 	public void eliminar(int idTipoevento) {

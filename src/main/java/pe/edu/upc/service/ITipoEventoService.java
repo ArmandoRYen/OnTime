@@ -8,5 +8,6 @@ public interface ITipoEventoService {
 	public void insertar (TipoEvento tipoevento);
 	public List<TipoEvento> listar();
 	public void eliminar (int idTipoevento);
+	List<TipoEvento> listarPorNombre(String nombre);
 
 }

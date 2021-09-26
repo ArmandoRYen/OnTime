@@ -29,6 +29,11 @@ public class EventoServiceImpl implements IEventoService, Serializable{
 	public List<Evento> listar() {
 		return evD.listar();
 	}
+	
+	@Override
+	public List<Evento> listarPorNombre(String nombre) {
+		return evD.listarPorNombrePersona(nombre);
+	}
 
 	@Override
 	public void eliminar(int idEvento) {

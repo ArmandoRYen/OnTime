@@ -8,6 +8,7 @@ public interface IPersonaDao {
 	public void insertar(Persona persona);
 	public List<Persona>listar();
 	public void eliminar(int idPersona);
+	List<Persona> listarLogin(Persona p);
 	
 
 }

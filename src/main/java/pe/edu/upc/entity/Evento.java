@@ -14,37 +14,37 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Evento")
-public class Evento implements Serializable{
+@Table(name = "Evento")
+public class Evento implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idEvento;
-	
-	@Column(name="nombreEvento", nullable=false, length=30)
+
+	@Column(name = "nombreEvento", nullable = false, length = 30)
 	private String nombreEvento;
-	
-	@Column(name="descripcionEvento", nullable=false, length=50)
+
+	@Column(name = "descripcionEvento", nullable = false, length = 50)
 	private String descripcionEvento;
-	
-	@Column(name="fechaEvento", nullable=false)
+
+	@Column(name = "fechaEvento", nullable = false)
 	private Date fechaEvento;
-	
-	@Column(name="complejidadEvento", nullable=false)
+
+	@Column(name = "complejidadEvento", nullable = false)
 	private int complejidadEvento;
 
 	@ManyToOne
-	@JoinColumn(name="idTipoEvento", nullable=false)
-	private TipoEvento idTipoEvento;
-	
+	@JoinColumn(name = "idTipoEvento", nullable = false)
+	private TipoEvento tipoEvento;
+
 	@ManyToOne
-	@JoinColumn(name="idPersona", nullable=false)
-	private Persona idPersona;
+	@JoinColumn(name = "idPersona", nullable = false)
+	private Persona persona;
 
 	public Evento() {
 		super();
@@ -52,15 +52,15 @@ public class Evento implements Serializable{
 	}
 
 	public Evento(int idEvento, String nombreEvento, String descripcionEvento, Date fechaEvento, int complejidadEvento,
-			TipoEvento idTipoEvento, Persona idPersona) {
+			TipoEvento tipoEvento, Persona persona) {
 		super();
 		this.idEvento = idEvento;
 		this.nombreEvento = nombreEvento;
 		this.descripcionEvento = descripcionEvento;
 		this.fechaEvento = fechaEvento;
 		this.complejidadEvento = complejidadEvento;
-		this.idTipoEvento = idTipoEvento;
-		this.idPersona = idPersona;
+		this.tipoEvento = tipoEvento;
+		this.persona = persona;
 	}
 
 	public int getIdEvento() {
@@ -103,26 +103,26 @@ public class Evento implements Serializable{
 		this.complejidadEvento = complejidadEvento;
 	}
 
-	public TipoEvento getIdTipoEvento() {
-		return idTipoEvento;
+	public TipoEvento getTipoEvento() {
+		return tipoEvento;
 	}
 
-	public void setIdTipoEvento(TipoEvento idTipoEvento) {
-		this.idTipoEvento = idTipoEvento;
+	public void setTipoEvento(TipoEvento tipoEvento) {
+		this.tipoEvento = tipoEvento;
 	}
 
-	public Persona getIdPersona() {
-		return idPersona;
+	public Persona getPersona() {
+		return persona;
 	}
 
-	public void setIdPersona(Persona idPersona) {
-		this.idPersona = idPersona;
+	public void setPersona(Persona persona) {
+		this.persona = persona;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(complejidadEvento, descripcionEvento, fechaEvento, idEvento, idPersona, idTipoEvento,
-				nombreEvento);
+		return Objects.hash(complejidadEvento, descripcionEvento, fechaEvento, idEvento, nombreEvento, persona,
+				tipoEvento);
 	}
 
 	@Override
@@ -137,10 +137,10 @@ public class Evento implements Serializable{
 		return complejidadEvento == other.complejidadEvento
 				&& Objects.equals(descripcionEvento, other.descripcionEvento)
 				&& Objects.equals(fechaEvento, other.fechaEvento) && idEvento == other.idEvento
-				&& Objects.equals(idPersona, other.idPersona) && Objects.equals(idTipoEvento, other.idTipoEvento)
-				&& Objects.equals(nombreEvento, other.nombreEvento);
+				&& Objects.equals(nombreEvento, other.nombreEvento) && Objects.equals(persona, other.persona)
+				&& Objects.equals(tipoEvento, other.tipoEvento);
 	}
+	
+	
 
-	
-	
 }

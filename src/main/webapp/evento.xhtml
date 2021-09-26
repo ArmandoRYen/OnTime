@@ -6,66 +6,201 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:composition template="master.xhtml">
 	<ui:define name="content">
-	
-	<div class="container">
-		
-		  <div class="row">
-			    <div class="col">	    	
-						<div id="chart_div" class="chardiv"></div>			    	  
-     			    </div>
-		    	<div class="col-7">
-		    	   <div class ="midiv">
-		    	   
-		    	   <h:form>
-				<div class="row">
-					<div class="col"><p:commandButton value="Agregar" type="button" styleClass="btn btn-secondary" onclick="PF('dlg2').show();" />	 </div>	    	    					
-						<div class="contenedor mb-5 mt-3" >
-							<div class="table table-striped table-bordered mydatatable">
-								<p:dataTable emptyMessage="No existen registros"
-									rowIndexVar="item" >
 
-									<p:column headerText="Tipo de Evento">
-										<h:outputText />
-									</p:column>
-									
-								</p:dataTable>
+		<div class="container">
 
-							</div>
-						</div>
+			<div class="row">
+				<div class="col">
+					<p:chart type="bar" model="#{eventoController.horizontalBarModel}"
+						style="height:300px" />
 				</div>
 
 
-			</h:form>
-		    	   </div>	    	
-		    	</div>
-    
-  </div>
-	</div>
-			<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="30rem">
-    				<h:outputText value="Ingrese prueba" />    				
-    				<h:form>
+				<div class="col-7">
+					<div class="midiv">
+
+						<h:form>
 							<div class="row">
 								<div class="col">
-									<h:outputLabel for="Aname" value = "Tipo de evento"/><br /> 
-									<p:inputText type="text" id="Aname" name="Aname" /><br /> 
-									<h:outputLabel for="Mname" value="Color"/> <br /> 
-									<p:inputText type="text" id="Mname" name="Mname" /><br />
-
+									<p:commandButton value="Agregar" type="button"
+										styleClass="btn btn-secondary" onclick="PF('dlg2').show();" />
 								</div>
-								<div class="col">
-									<h:outputLabel for="Fname" value ="Fecha"/><br />
-									<div class="input-group date ">
-										<p:datePicker  pattern="dd/MM/yyyy"
-											  type="calendar"
-											timeZone="UTC" required="true" >
-										</p:datePicker>
+								<div class="contenedor mb-5 mt-3">
+									<div class="table table-striped table-bordered mydatatable">
+										<p:dataTable id="lstTipoEvento" var="t"
+											value="#{eventoController.listaTipoEventos}"
+											styleClass="table table-bordered"
+											emptyMessage="No existen registros" rowIndexVar="item"
+											style="margin-bottom:0">
+
+											<p:column headerText="Id" sortBy="#{t.idTipoEvento}">
+												<h:outputText value="#{t.idTipoEvento}" />
+											</p:column>
+
+											<p:column headerText="Nombre" sortBy="#{t.nombreTipoEvento}">
+												<h:outputText value="#{t.nombreTipoEvento}" />
+											</p:column>
+
+											<p:column headerText="Color" sortBy="#{t.colorTipoEvento}">
+												<h:outputText value="#{t.colorTipoEvento}" />
+											</p:column>
+
+										</p:dataTable>
+
 									</div>
 								</div>
 							</div>
 						</h:form>
-    				
-					</p:dialog>
-		
+					</div>
+				</div>
+
+				<div class="col-7">
+					<div class="midiv">
+
+						<h:form>
+							<div class="row">
+								<div class="col">
+									<p:commandButton value="Agregar" type="button"
+										styleClass="btn btn-secondary" onclick="PF('dlg3').show();" />
+								</div>
+								<div class="contenedor mb-5 mt-3">
+									<div class="table table-striped table-bordered mydatatable">
+										<p:dataTable id="lstEvento" var="e"
+											value="#{eventoController.listaEventos}"
+											styleClass="table table-bordered"
+											emptyMessage="No existen registros" rowIndexVar="item"
+											style="margin-bottom:0">
+
+											<p:column headerText="Id" sortBy="#{e.idEvento}">
+												<h:outputText value="#{e.idEvento}" />
+											</p:column>
+
+											<p:column headerText="Nombre" sortBy="#{e.nombreEvento}">
+												<h:outputText value="#{e.nombreEvento}" />
+											</p:column>
+
+											<p:column headerText="Descripcion"
+												sortBy="#{e.descripcionEvento}">
+												<h:outputText value="#{e.descripcionEvento}" />
+											</p:column>
+
+											<p:column headerText="Fecha" sortBy="#{e.fechaEvento}">
+												<h:outputText value="#{e.fechaEvento}" />
+											</p:column>
+
+											<p:column headerText="Complejidad"
+												sortBy="#{e.complejidadEvento}">
+												<h:outputText value="#{e.complejidadEvento}" />
+											</p:column>
+
+											<p:column headerText="Tipo Evento"
+												sortBy="#{e.tipoEvento.nombreTipoEvento}">
+												<h:outputText value="#{e.tipoEvento.nombreTipoEvento}" />
+											</p:column>
+
+											<p:column headerText="Usuario"
+												sortBy="#{e.persona.nombrePersona}">
+												<h:outputText value="#{e.persona.nombrePersona}" />
+											</p:column>
+
+										</p:dataTable>
+
+									</div>
+								</div>
+							</div>
+						</h:form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true"
+			height="30rem">
+			<h:form>
+				<div class="row">
+					<div class="col">
+						<h:outputLabel for="Aname" value="Tipo de evento" />
+						<br />
+						<p:inputText autocomplete="off" id="tipoEventoName"
+							styleClass="form-control"
+							value="#{eventoController.tipoevento.nombreTipoEvento}"
+							required="true" />
+						<br />
+						<h:outputLabel for="Mname" value="Color" />
+						<br />
+						<p:inputText autocomplete="off" id="tipoEventoColor"
+							styleClass="form-control"
+							value="#{eventoController.tipoevento.colorTipoEvento}"
+							required="true" />
+						<br />
+						<p:commandButton value="Grabar"
+							actionListener="#{eventoController.insertarTipoEvento()}"
+							styleClass="btn btn-primary " update="@form"
+							action="evento?faces-redirect=true" />
+						<p:commandButton value="Cancelar" onclick="PF('dlg2').hide();" />
+					</div>
+				</div>
+			</h:form>
+
+		</p:dialog>
+
+		<p:dialog header="Modal Dialog" widgetVar="dlg3" modal="true"
+			height="30rem">
+			<h:form>
+				<div class="row">
+					<div class="col">
+						<h:outputLabel for="eventoName" value="Evento" />
+						<br />
+						<p:inputText autocomplete="off" id="eventoName"
+							styleClass="form-control"
+							value="#{eventoController.evento.nombreEvento}" required="true" />
+						<br />
+						<h:outputLabel for="eventoDescripcion" value="Descripcion" />
+						<br />
+						<p:inputText autocomplete="off" id="eventoDescripcion"
+							styleClass="form-control"
+							value="#{eventoController.evento.descripcionEvento}"
+							required="true" />
+						<br />
+						<h:outputLabel for="eventoFecha" value="Fecha" />
+						<br />
+						<p:calendar id="eventoFecha" pattern="dd/MM/yyyy"
+							value="#{eventoController.evento.fechaEvento}" showOn="button"
+							timeZone="UTC" required="true">
+						</p:calendar>
+
+						<br />
+						<h:outputLabel for="eventoComplejidad" value="Complejidad" />
+						<br />
+
+						<p:inputText type="number" autocomplete="off"
+							id="eventoComplejidad" styleClass="form-control"
+							value="#{eventoController.evento.complejidadEvento}"
+							required="true" />
+						<br />
+
+						<h:outputLabel for="tipoEventoSelect" value="Tipo Evento"
+							styleClass="control-label" />
+						<p:selectOneMenu id="tipoEventoSelect"
+							value="#{eventoController.evento.tipoEvento}"
+							converter="omnifaces.SelectItemsConverter">
+							<f:selectItems value="#{eventoController.listaTipoEventos}"
+								var="tipEven" itemLabel="#{tipEven.nombreTipoEvento}"
+								itemValue="#{tipEven}" />
+
+						</p:selectOneMenu>
+
+						<p:commandButton value="Grabar"
+							actionListener="#{eventoController.insertarEvento()}"
+							styleClass="btn btn-primary " update="@form"
+							action="evento?faces-redirect=true" />
+						<p:commandButton value="Cancelar" onclick="PF('dlg3').hide();" />
+					</div>
+				</div>
+			</h:form>
+
+		</p:dialog>
+
 	</ui:define>
 </ui:composition>
 </html>

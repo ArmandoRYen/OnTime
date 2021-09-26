@@ -1,162 +1,151 @@
 
 <!DOCTYPE html>
-<html   lang="es" class="no-js" xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui">
-   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign in and Sign up Form</title>
-    <link rel="stylesheet" href="resources/css/styleLogin.css" />
-  </head>
-  <body>
-    <main>
-      <div class="box">
-        <div class="inner-box">
-          <div class="forms-wrap">
-            <h:form action="tablero.xhtml" autocomplete="off" class="sign-in-form">
-              <div class="logo">
-                <img src="resources/img/logo.png" alt="easyclass" />
-              </div>
+<html lang="es" class="no-js" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign in and Sign up Form</title>
+<link rel="stylesheet" href="resources/css/styleLogin.css" />
+</head>
+<body>
+	<main>
+		<div class="box">
+			<div class="inner-box">
+				<div class="forms-wrap">
+					<h:form class="sign-in-form">
+						<div class="logo">
+							<img src="resources/img/logo.png" alt="easyclass" />
+						</div>
 
-              <div class="heading">
-                <h2>Bienvenido</h2>
-                <h6>Todavìa no estás registrado?</h6>
-                <a href="#" class="toggle">Sign up</a>
-              </div>
+						<div class="heading">
+							<h2>Bienvenido</h2>
+							<h6>Todavìa no estás registrado?</h6>
+							<a href="#" class="toggle">Sign up</a>
+						</div>
 
-              <div class="actual-form">
-                <div class="input-wrap">
-                  <input
-                    type="text"
-                    class="input-field"
-                    autocomplete="off"
-                  />
-                  <label>Name</label>
-                </div>
+						<div class="actual-form">
+							<div class="input-wrap">
+								<p:inputText autocomplete="off" id="nombreIngreso"
+									styleClass="form-control" class="input-field"
+									value="#{personaController.personaIngreso.nombrePersona}"
+									required="true" />
+							</div>
 
-                <div class="input-wrap">
-                  <input
-                    type="password"
-                    class="input-field"
-                    autocomplete="off"
-                  />
-                  <label>Password</label>
-                </div>
-	
-			<div>
-			
-                <h:commandButton value="Ingresar" styleClass="sign-btn" action="tablero" />            
-              </div>
-                
-                <p class="text">
-                  Contraseña olvidada o datos olvidados ?
-                  <a href="#">Get help</a> signing in
-                </p>
-              </div>
-            </h:form>
+							<div class="input-wrap">
+								<p:inputText autocomplete="off" id="contrasenaIngreso"
+									styleClass="form-control" class="input-field"
+									value="#{personaController.personaIngreso.contrasenaPersona}"
+									required="true" />
+								<label>Password</label>
+							</div>
 
-            <h:form class="sign-up-form">
-              <div class="logo">
-                <img src="resources/img/logo.png" alt="easyclass" />
+							<div>
+								<h:commandLink action="#{personaController.login2()}">
+									Ingresar
+								</h:commandLink>
+								
+							</div>
 
-              </div>
+							<p class="text">
+								Contraseña olvidada o datos olvidados ? <a href="#">Get help</a>
+								signing in
+							</p>
+						</div>
+					</h:form>
 
-              <div class="heading">
-                <h2>Empieza YA!</h2>
-                <h6>Ya tienes una cuenta?</h6>
-                <a href="#" class="toggle"> Sign in </a>
-              </div>
+					<h:form class="sign-up-form">
+						<div class="logo">
+							<img src="resources/img/logo.png" alt="easyclass" />
 
-              <div class="actual-form">
-                <div class="input-wrap">
-                  <input
-                    type="text"
-                    minlength="4"
-                    class="input-field"
-                    autocomplete="off"
-                    required = "true"
-                  />
-                  <label>Nombre</label>
-                </div>
+						</div>
 
-                <div>
-                  
-                  	<div> 
-                  	<input type="checkbox" id="dia1" name="dia1" value="Lunes" />
-                  	<input type="checkbox" id="tipo2" name="tipo2" value="Lunes" style="padding: 29rem"/><br/>
-					<p style="color: gray;">Adulto          Joven</p>
+						<div class="heading">
+							<h2>Empieza YA!</h2>
+							<h6>Ya tienes una cuenta?</h6>
+							<a href="#" class="toggle"> Sign in </a>
+						</div>
 
-                  	</div>
-					
-					
+						<div class="actual-form">
+							<div class="input-wrap">
+								<p:inputText autocomplete="off" id="nombre"
+									styleClass="form-control" class="input-field"
+									value="#{personaController.personaNuevo.nombrePersona}"
+									required="true" />
+
+								<label>Nombre</label>
+							</div>
+
+							<div class="input-wrap">
+								<p:inputText autocomplete="off" id="tipoPersona"
+									styleClass="form-control" class="input-field"
+									value="#{personaController.personaNuevo.tipoPersona}"
+									required="true" />
+
+								<label>Tipo Persona</label>
+							</div>
+
+							<div class="input-wrap">
+								<p:inputText autocomplete="off" id="sueldo"
+									styleClass="form-control" class="input-field"
+									value="#{personaController.personaNuevo.sueldoPersona}"
+									required="true" />
+
+								<label>Sueldo</label>
+							</div>
+
+							<div class="input-wrap">
+								<p:inputText autocomplete="off" id="contrasena"
+									styleClass="form-control" class="input-field"
+									value="#{personaController.personaNuevo.contrasenaPersona}"
+									required="true" />
+
+								<label>Contrasena</label>
+							</div>
+
+							<p:commandButton value="Nuevo"
+								action="#{personaController.insertar()}" styleClass="sign-btn" />
+							<p class="text">
+								Al registrarse, estoy de acuerdo con <a href="#">Términos de
+									servicio</a> and <a href="#">Políticas de privacidad</a>
+							</p>
+						</div>
+					</h:form>
 				</div>
-				<div class="input-wrap">
-                  <input
-                    type="password"
-                    minlength="4"
-                    class="input-field"
-                    autocomplete="off"
-                    required = "true"
-                  />
-                  <label>Sueldo</label>
-                </div>
 
-                <div class="input-wrap">
-                  <input
-                    type="password"
-                    minlength="4"
-                    class="input-field"
-                    autocomplete="off"
-                    required = "true"
-                  />
-                  <label>Password</label>
-                </div>
+				<div class="carousel">
+					<div class="images-wrapper">
+						<img src="resources/img/image1.png" class="image img-1 show"
+							alt="" /> <img src="resources/img/image1.png"
+							class="image img-2" alt="" /> <img
+							src="resources/img/image1.png" class="image img-3" alt="" />
+					</div>
 
-                <p:commandButton value="Nuevo"						
-							action="#{personaController.insertar()}"
-							styleClass="sign-btn" />
-                <p class="text">
-                  Al registrarse, estoy de acuerdo con
-                  <a href="#">Términos de servicio</a> and
-                  <a href="#">Políticas de privacidad</a>
-                </p>
-              </div>
-            </h:form>
-          </div>
+					<div class="text-slider">
+						<div class="text-wrap">
+							<div class="text-group">
+								<h2>Crea tu propio calendario</h2>
+								<h2>Organiza tus eventos</h2>
+								<h2>Planea tu día</h2>
+							</div>
+						</div>
 
-          <div class="carousel">
-            <div class="images-wrapper">
-              <img src="resources/img/image1.png" class="image img-1 show" alt="" />
-              <img src="resources/img/image1.png" class="image img-2" alt="" />
-              <img src="resources/img/image1.png" class="image img-3" alt="" />
-            </div>
+						<div class="bullets">
+							<span class="active" data-value="1"></span> <span data-value="2"></span>
+							<span data-value="3"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
 
-            <div class="text-slider">
-              <div class="text-wrap">
-                <div class="text-group">
-                  <h2>Crea tu propio calendario</h2>
-                  <h2>Organiza tus eventos</h2>
-                  <h2>Planea tu día</h2>
-                </div>
-              </div>
+	<!-- Javascript file -->
 
-              <div class="bullets">
-                <span class="active" data-value="1"></span>
-                <span data-value="2"></span>
-                <span data-value="3"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <!-- Javascript file -->
-
-    <script src="resources/js/app.js"></script>
-  </body>
+	<script src="resources/js/app.js"></script>
+</body>
 </html>

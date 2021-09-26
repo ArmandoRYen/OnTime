@@ -36,6 +36,16 @@ public class TipoEventoDaoImpl implements ITipoEventoDao, Serializable {
 		return lista;
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<TipoEvento> listarPorNombrePersona(String nombre) {
+		List<TipoEvento> lista =new ArrayList<TipoEvento>();
+		Query q =em.createQuery("select te from TipoEvento te where te.persona.nombrePersona like ?1");
+		q.setParameter(1, "%" + nombre + "%");
+		lista =(List<TipoEvento>) q.getResultList();
+		return lista;
+	}
+	
 	@Transactional
 	@Override
 	public void eliminar(int idTipoevento) {
