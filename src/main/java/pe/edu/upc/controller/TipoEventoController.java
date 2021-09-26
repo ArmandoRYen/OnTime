@@ -11,6 +11,7 @@ import javax.inject.Named;
 
 import pe.edu.upc.entity.TipoEvento;
 import pe.edu.upc.service.ITipoEventoService;
+import pe.edu.upc.serviceimpl.LoginService;
 
 @Named
 @RequestScoped
@@ -22,6 +23,9 @@ public class TipoEventoController implements Serializable{
 	private ITipoEventoService teService;
 	private TipoEvento tipoevento;
 	List<TipoEvento> ListaTipoEvento;
+	
+	@Inject
+	private LoginService loginService;
 	
 	@PostConstruct
 	public void init() {
@@ -38,6 +42,7 @@ public class TipoEventoController implements Serializable{
 		teService.insertar(tipoevento);
 		limpiarTipoEvento();
 	}
+	
 	public void listar() {
 		ListaTipoEvento= teService.listar();
 	}
