@@ -19,10 +19,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="midiv">
-
-					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary"
-						data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar</button>
+					<h:form>
+						<div class="col">
+							<p:commandButton value="Agregar" type="button"
+								styleClass="btn btn-secondary" onclick="PF('dlg2').show();"></p:commandButton>
+						</div>
+					</h:form>
 				</div>
 			</div>
 
@@ -31,23 +33,26 @@
 					<div class="midiv">
 						<div class="contenedor mb-5 mt-3">
 							<div class="table table-striped table-bordered mydatatable ">
-								<p:dataTable emptyMessage="No existen registros"
-									rowIndexVar="item">
+								<p:dataTable id="pago" var="p"
+									value="#{deudaController.listaDeudas}"
+									styleClass="table table-bordered"
+									emptyMessage="No existen registros" rowIndexVar="item"
+									style="margin-bottom:0">
+									<p:column headerText="Id" sortBy="#{p.idDeuda}">
+										<h:outputText value="#{p.idDeuda}" />
+									</p:column>
+									<p:column headerText="Acreedor" sortBy="#{p.nombreAcreedor}">
+										<h:outputText value="#{p.nombreAcreedor}" />
+									</p:column>
+									<p:column headerText="Monto" sortBy="#{p.moneyPago}">
+										<h:outputText value="#{p.moneyPago}" />
+									</p:column>
+									<p:column headerText="Fecha" sortBy="#{p.fechaPago}">
+										<h:outputText value="#{p.fechaPago}" />
+									</p:column>
 
-									<p:column headerText="Acreedor">
-										<h:outputText />
-									</p:column>
-									<p:column headerText="Monto">
-										<h:outputText />
-									</p:column>
-									<p:column headerText="Fecha">
-										<h:outputText />
-									</p:column>
-									<p:column headerText="Saldo">
-										<h:outputText />
-									</p:column>
-									<p:column headerText="Acciones">
-										<h:outputText />
+									<p:column headerText="Acciones" exportable="false">
+										<h:commandLink value="Eliminar" actionListener="#{deudaController.eliminar(p)}" />
 									</p:column>
 
 								</p:dataTable>
@@ -62,48 +67,53 @@
 
 
 		</div>
-		
-		<div class="modal fade" id="exampleModal" tabindex="-1"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Agregar Pago</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
+		<p:dialog header="Registro de Pagos" widgetVar="dlg2" modal="true"
+			height="30rem">
+			<h:form>
+				<div class="row">
+					<div class="col">
+						<h:outputLabel for="Aname" value="Agregar Pagos" />
+						<br />
+						<p:inputText autocomplete="off" id="Acreedor"
+							styleClass="form-control"
+							value="#{deudaController.deuda.nombreAcreedor}" required="true" />
+						<br />
+						<h:outputLabel for="montoint" value="Digite su Monto" />
+						<br />
+						<p:inputText autocomplete="off" id="Monto"
+							styleClass="form-control"
+							value="#{deudaController.deuda.moneyPago}" required="true" />
+						<br />
+						<h:outputLabel for="saldo" value="Saldo" />
+						<br />
+						<p:inputText autocomplete="off" id="Saldo"
+							styleClass="form-control" value="#{deudaController.deuda.pagoRealizado}" required="true"/><br />
+					
+					<h:outputLabel for="Persona" value="Nombre" />
+					<br />
+					<p:selectOneMenu id="Persona"
+						value="#{deudaController.deuda.idPersona}"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItems value="#{deudaController.listaPersonas}" var="per"
+							itemLabel="#{per.nombrePersona}" itemVaule="#{per}" />
+					</p:selectOneMenu>
+					<br />
+					<h:outputLabel for="fecha" value="Digite su Fecha" />
+					<br />
+					<p:calendar pattern="dd/MM/yyyy" timeZone="UTC" required="true"
+						value="#{deudaController.deuda.fechaPago}" showOn="button"></p:calendar>
+					<br />
+					<p:commandButton value="Guardar"
+						actionListener="#{deudaController.insertar()}"
+						styleClass="btn btn-primary" update="@form"
+						action="deuda?faces-redirect=true" />
+					<p:commandButton value="Cancelar" onclick="PF('dlg2').hide();" />
 
-						<h:form>
-
-							<div class="row">
-
-								<div class="col">
-									<h:outputLabel for="Aname" value = "nombre del acredor"/><br /> 
-									<p:inputText type="text" id="Aname" name="Aname" /><br /> 
-									<h:outputLabel for="Mname" value="monto"/> <br /> 
-									<p:inputText type="text" id="Mname" name="Mname" /><br />
-
-								</div>
-								<div class="col">
-									<h:outputLabel for="Fname" value ="Fecha"/><br />
-									<div class="input-group date ">
-										<p:datePicker  pattern="dd/MM/yyyy"
-											  type="calendar"
-											timeZone="UTC" required="true" >
-										</p:datePicker>
-									</div>
-								</div>
-							</div>
-						</h:form>
-					</div>
-					<div class="modal-footer">
-						<h:commandButton type="button" styleClass="btn btn-secondary" value ="cerrar"/>
-						<p:commandButton type="button" styleClass="btn btn-primary" value="Save changes"/>
-					</div>
 				</div>
-			</div>
-		</div>
+				</div>
+			</h:form>
+		</p:dialog>
+
 
 
 	</ui:define>
