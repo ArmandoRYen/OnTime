@@ -26,18 +26,14 @@ public class Nota implements Serializable{
 	
 	@Column(name="descripcionNota", nullable=false, length=50)
 	private String descripcionNota;
-
 	
 	@ManyToOne
 	@JoinColumn(name="idPersona", nullable=false)
 	private Persona idPersona;
 
-
 	public Nota() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
 
 	public Nota(int idNota, String nombreNota, String descripcionNota, Persona idPersona) {
 		super();

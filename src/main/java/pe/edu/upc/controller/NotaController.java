@@ -22,14 +22,11 @@ public class NotaController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-
 	@Inject
 	private INotaService nService;
 	
 	@Inject
 	private IPersonaService pService;
-
-
 	
 	private Nota nota;
 	List<Nota> listaNotas;
@@ -38,23 +35,18 @@ public class NotaController implements Serializable {
 	List<Persona> listaPersonas;
 
 	@PostConstruct
-	public void init() {
-		
-		
+	public void init() {	
 		this.listaNotas = new ArrayList<Nota>();
-		this.nota = new Nota();
-		
+		this.nota = new Nota();		
 		this.listaPersonas = new ArrayList<Persona>();
-		this.persona = new Persona();
-
-	
+		this.persona = new Persona();	
 		this.listarNota();
 		this.listarPersona();
 	}
 
 	public String nuevaNota() {
 		this.setNota(new Nota());
-		return "nota.xhtml";
+		return "notas.xhtml";
 	}
 
 	public void insertar() {
@@ -65,9 +57,7 @@ public class NotaController implements Serializable {
 
 	public void limpiarNota() {
 		this.init();
-	}
-
-	
+	}	
 
 	public void listarNota() {
 		listaNotas = nService.listar();
@@ -121,9 +111,4 @@ public class NotaController implements Serializable {
 	public void setListaPersonas(List<Persona> listaPersonas) {
 		this.listaPersonas = listaPersonas;
 	}
-
-	
-
-	
-
 }

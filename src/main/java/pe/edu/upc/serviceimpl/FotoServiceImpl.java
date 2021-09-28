@@ -3,12 +3,16 @@ package pe.edu.upc.serviceimpl;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import pe.edu.upc.dao.IFotoDao;
 import pe.edu.upc.entity.Foto;
 import pe.edu.upc.service.IFotoService;
 
+@Named
+@RequestScoped
 public class FotoServiceImpl implements IFotoService, Serializable{
 
 

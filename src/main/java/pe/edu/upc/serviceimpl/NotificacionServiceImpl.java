@@ -3,12 +3,16 @@ package pe.edu.upc.serviceimpl;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import pe.edu.upc.dao.INotificacionDao;
 import pe.edu.upc.entity.Notificacion;
 import pe.edu.upc.service.INotificacionService;
 
+@Named
+@RequestScoped
 public class NotificacionServiceImpl implements INotificacionService, Serializable{
 
 
