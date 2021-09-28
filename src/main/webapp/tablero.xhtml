@@ -55,18 +55,66 @@
     	<div class="col-4">
     	   <div class ="midiv">
     	   NOTAS
-    	   <br>Ingresar BLALBLABLABLALBA </br>
-			<br>Ingresar BLALBLABLABLALBA </br>			
-			<br>Ingresar BLALBLABLABLALBA </br>
-			<br>Ingresar BLALBLABLABLALBA </br>
-			<br>Ingresar BLALBLABLABLALBA </br>			
-			<br>Ingresar BLALBLABLABLALBA </br> 
+    	   <div class="container">
+						<h:form>
+							<div class="row">
+								<div class="col" align = "right">
+									<p:commandButton value="Agregar" type="button"
+										styleClass="btn btn-secondary" onclick="PF('dlg2').show();" />
+								</div>
+								<div class="contenedor mb-5 mt-3">
+									<div class="table table-striped table-bordered mydatatable">
+										<p:dataTable id="lstNota" var="l"
+											value="#{notaController.listaNotas}"
+											styleClass="table table-bordered"
+											emptyMessage="No existen Notas" rowIndexVar="item"
+											style="margin-bottom:0">
+
+											<p:column headerText="Nombre de la Nota" sortBy="#{l.nombreNota}">
+												<h:outputText value="#{l.nombreNota}" />
+											</p:column>
+											<p:column headerText="Descripcion" sortBy="#{l.descripcionNota}">
+												<h:outputText value="#{l.descripcionNota}" />
+											</p:column>
+										</p:dataTable>
+
+									</div>
+								</div>
+							</div>
+						</h:form>
+					</div>
+				</div>
     	   </div>	    	
-    	</div>
-    
-  </div>
+    </div>
+	<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true"
+			height="30rem">
+			<h:form>
+				<div class="row">
+					<div class="col">
+						<h:outputLabel for="NNota" value="Nombre de la Nota" />
+						<br />
+						<p:inputText autocomplete="off" id="nombreNota"
+							styleClass="form-control"
+							value="#{notaController.nota.nombreNota}"
+							required="true" />
+						<br />
+						<h:outputLabel for="DNota" value="Descripción" />
+						<br />
+						<p:inputText autocomplete="off" id="notaDescripcion"
+							styleClass="form-control"
+							value="#{notaController.nota.descripcionNota}"
+							required="true" />
+						<br />
+						<p:commandButton value="Grabar"
+							actionListener="#{notaController.insertar()}"
+							styleClass="btn btn-primary " update="@form"
+							action="nota?faces-redirect=true" />
+						<p:commandButton value="Cancelar" onclick="PF('dlg2').hide();" />
+					</div>
+				</div>
+			</h:form>
+		</p:dialog>
 	</div>
-			
 		
 	</ui:define>
 </ui:composition>
