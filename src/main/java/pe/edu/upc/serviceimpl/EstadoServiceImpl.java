@@ -15,7 +15,6 @@ import pe.edu.upc.service.IEstadoService;
 @RequestScoped
 public class EstadoServiceImpl implements IEstadoService, Serializable{
 
-
 	private static final long serialVersionUID = 1L;
 	
 	@Inject

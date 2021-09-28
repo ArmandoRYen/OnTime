@@ -33,7 +33,6 @@ public class Pendiente {
 
 	public Pendiente() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Pendiente(int idPendiente, String nombrePendiente, String nombreTipoPendiente, Estado estado,

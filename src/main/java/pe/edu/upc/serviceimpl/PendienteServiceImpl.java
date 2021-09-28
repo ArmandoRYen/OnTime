@@ -22,19 +22,16 @@ public class PendienteServiceImpl implements IPendienteService, Serializable {
 	
 	@Override
 	public void insertar(Pendiente pendiente) {
-		// TODO Auto-generated method stub
 		pD.insertar(pendiente);
 	}
 
 	@Override
 	public List<Pendiente> listar() {
-		// TODO Auto-generated method stub
 		return pD.listar();
 	}
 
 	@Override
 	public void eliminar(int idPendiente) {
-		// TODO Auto-generated method stub
 		pD.eliminar(idPendiente);
 	}
 

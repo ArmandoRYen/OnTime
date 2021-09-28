@@ -14,9 +14,7 @@ import pe.edu.upc.entity.Persona;
 import pe.edu.upc.service.IPendienteService;
 import pe.edu.upc.service.IPersonaService;
 
-public class PendienteController implements Serializable {
-
-	
+public class PendienteController implements Serializable {	
 
 	private static final long serialVersionUID = 1L;
 	
@@ -24,8 +22,7 @@ public class PendienteController implements Serializable {
 	private IPendienteService peService;
 	
 	private Pendiente pendiente;
-	List<Pendiente> listapendiente;
-	
+	List<Pendiente> listaPendientes;	
 
 	@Inject
 	private IPersonaService pService;
@@ -41,7 +38,7 @@ public class PendienteController implements Serializable {
 	
 	@PostConstruct
 	public void init() {
-		this.listapendiente = new ArrayList<Pendiente>();
+		this.listaPendientes = new ArrayList<Pendiente>();
 		this.pendiente = new Pendiente();
 		
 		this.listaPersonas = new ArrayList<Persona>();
@@ -54,11 +51,6 @@ public class PendienteController implements Serializable {
 		this.listarpendiente();
 		this.listarPersona();		
 	}
-	public String nuevoPendiente() {
-		this.setPendiente (new Pendiente());
-		return "pendiente.xhtml";
-	}
-
 
 	public void insertar() {
 		peService.insertar(pendiente);
@@ -66,20 +58,17 @@ public class PendienteController implements Serializable {
 		this.listarpendiente();
 	}
 
-
 	public void listarpendiente() {
-		listapendiente = peService.listar();
+		listaPendientes = peService.listar();
 	}
 	
 	public void listaestado() {
 		listaestado = eService.listar();
 	}
-
 	
 	public void listarPersona() {
 		listaPersonas = pService.listar();
 	}
-
 	
 	public void limpiarPendiente() {
 		this.init();
@@ -96,11 +85,11 @@ public class PendienteController implements Serializable {
 	public void setPendiente(Pendiente pendiente) {
 		this.pendiente = pendiente;
 	}
-	public List<Pendiente> getListapendiente() {
-		return listapendiente;
+	public List<Pendiente> getListaPendientes() {
+		return listaPendientes;
 	}
-	public void setListapendiente(List<Pendiente> listapendiente) {
-		this.listapendiente = listapendiente;
+	public void setListaPendientes(List<Pendiente> listaPendientes) {
+		this.listaPendientes = listaPendientes;
 	}
 	public Persona getPersona() {
 		return persona;
@@ -126,5 +115,4 @@ public class PendienteController implements Serializable {
 	public void setListaestado(List<Estado> listaestado) {
 		this.listaestado = listaestado;
 	}
-
 }

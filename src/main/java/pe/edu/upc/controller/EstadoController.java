@@ -27,8 +27,7 @@ public class EstadoController implements Serializable{
 	public void init() {
 		this.ListaEstado =new ArrayList<Estado>();
 		this.estado = new Estado();
-		this.listarEstado();
-		
+		this.listarEstado();		
 	}
 	
 	public void insertar() {
@@ -60,9 +59,7 @@ public class EstadoController implements Serializable{
 
 	public void setListaEstado(List<Estado> listaEstado) {
 		ListaEstado = listaEstado;
-	}
-	
-	
+	}	
 	
 }
 

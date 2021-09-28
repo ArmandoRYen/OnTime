@@ -8,6 +8,4 @@ public interface IPendienteService {
 	public void insertar(Pendiente pendiente);
 	public List<Pendiente> listar();
 	public void eliminar(int idpendiente);
-	
-
 }

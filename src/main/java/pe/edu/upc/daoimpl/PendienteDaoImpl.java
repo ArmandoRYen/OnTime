@@ -18,16 +18,13 @@ private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
-
 	
 	@Transactional
 	@Override
 	public void insertar(Pendiente pendiente) {
 		// TODO Auto-generated method stub
 		em.persist(pendiente);
-
-	}
-	
+	}	
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -43,8 +40,6 @@ private static final long serialVersionUID = 1L;
 	public void eliminar(int idpendiente) {
 		Pendiente pendiente = new Pendiente();
 		pendiente = em.getReference(Pendiente.class, idpendiente);
-		em.remove(pendiente);
-		
+		em.remove(pendiente);		
 	}
-
 }
