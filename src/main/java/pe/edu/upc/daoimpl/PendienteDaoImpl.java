@@ -42,4 +42,14 @@ private static final long serialVersionUID = 1L;
 		pendiente = em.getReference(Pendiente.class, idpendiente);
 		em.remove(pendiente);		
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Pendiente> listarPorNombrePersona(String nombre) {
+		List<Pendiente> lista =new ArrayList<Pendiente>();
+		Query q =em.createQuery("select p from Pendiente p where p.persona.nombrePersona like ?1");
+		q.setParameter(1, "%" + nombre + "%");
+		lista =(List<Pendiente>) q.getResultList();
+		return lista;
+	}
 }
