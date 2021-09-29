@@ -69,15 +69,10 @@ public class EventoController implements Serializable {
 		this.createHorizontalBarModel();
 	}
 
-	public String nuevoEvento() {
-		this.setEvento(new Evento());
-		return "evento.xhtml";
-	}
-
 	public void insertarEvento() {
 		evento.setIdEvento(0);
 		Persona personaLogin = loginService.getPersona();
-		if (personaLogin != null) {
+		if(personaLogin != null) {
 			evento.setPersona(personaLogin);
 			evService.insertar(evento);
 			limpiarEvento();
@@ -110,7 +105,6 @@ public class EventoController implements Serializable {
 		} else {
 			listaTipoEventos = teService.listarPorNombre(personaLogin.getNombrePersona());
 		}
-
 	}
 
 	public void listarEvento() {

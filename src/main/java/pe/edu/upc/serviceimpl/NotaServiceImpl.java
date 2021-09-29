@@ -34,4 +34,9 @@ public class NotaServiceImpl implements INotaService, Serializable{
 	public void eliminar(int idNota) {
 		nD.eliminar(idNota);		
 	}
+
+	@Override
+	public List<Nota> listarPorNombre(String nombre) {
+		return nD.listarPorNombrePersona(nombre);
+	}
 }

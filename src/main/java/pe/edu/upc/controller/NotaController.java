@@ -15,6 +15,7 @@ import pe.edu.upc.service.INotaService;
 
 import pe.edu.upc.entity.Persona;
 import pe.edu.upc.service.IPersonaService;
+import pe.edu.upc.serviceimpl.LoginService;
 
 @Named
 @RequestScoped
@@ -33,6 +34,9 @@ public class NotaController implements Serializable {
 	
 	private Persona persona;
 	List<Persona> listaPersonas;
+	
+	@Inject
+	private LoginService loginService;
 
 	@PostConstruct
 	public void init() {	
@@ -44,15 +48,15 @@ public class NotaController implements Serializable {
 		this.listarPersona();
 	}
 
-	public String nuevaNota() {
-		this.setNota(new Nota());
-		return "notas.xhtml";
-	}
-
 	public void insertar() {
-		nService.insertar(nota);
-		limpiarNota();
-		this.listarNota();
+		nota.setIdNota(0);
+		Persona personaLogin = loginService.getPersona();
+		if(personaLogin != null) {
+			nota.setPersona(personaLogin);
+			nService.insertar(nota);
+			limpiarNota();
+			this.listarNota();
+		}
 	}
 
 	public void limpiarNota() {
@@ -60,7 +64,12 @@ public class NotaController implements Serializable {
 	}	
 
 	public void listarNota() {
-		listaNotas = nService.listar();
+		Persona personaLogin = loginService.getPersona();
+		if(personaLogin == null) {			
+			listaNotas = nService.listar();		
+		} else {
+			listaNotas = nService.listarPorNombre(personaLogin.getNombrePersona());
+		}
 	}
 	
 	public void listarPersona() {

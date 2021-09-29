@@ -11,7 +11,6 @@ import javax.transaction.Transactional;
 
 import pe.edu.upc.dao.IEventoDao;
 import pe.edu.upc.entity.Evento;
-import pe.edu.upc.entity.TipoEvento;
 
 public class EventoDaoImpl implements IEventoDao, Serializable {
 	

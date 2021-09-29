@@ -42,4 +42,14 @@ public class NotaDaoImpl implements INotaDao, Serializable {
 		em.remove(nota);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Nota> listarPorNombrePersona(String nombre) {
+		List<Nota> lista =new ArrayList<Nota>();
+		Query q =em.createQuery("select n from Nota n where n.persona.nombrePersona like ?1");
+		q.setParameter(1, "%" + nombre + "%");
+		lista =(List<Nota>) q.getResultList();
+		return lista;
+	}
+
 }

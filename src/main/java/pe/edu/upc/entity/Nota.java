@@ -28,62 +28,50 @@ public class Nota implements Serializable{
 	private String descripcionNota;
 	
 	@ManyToOne
-	@JoinColumn(name="idPersona", nullable=false)
-	private Persona idPersona;
+	@JoinColumn(name="Persona", nullable=false)
+	private Persona persona;
 
 	public Nota() {
 		super();
 	}
-
-	public Nota(int idNota, String nombreNota, String descripcionNota, Persona idPersona) {
+	
+	public Nota(int idNota, String nombreNota, String descripcionNota, Persona persona) {
 		super();
 		this.idNota = idNota;
 		this.nombreNota = nombreNota;
 		this.descripcionNota = descripcionNota;
-		this.idPersona = idPersona;
+		this.persona = persona;
 	}
-
 
 	public int getIdNota() {
 		return idNota;
 	}
 
-
 	public void setIdNota(int idNota) {
 		this.idNota = idNota;
 	}
-
 
 	public String getNombreNota() {
 		return nombreNota;
 	}
 
-
 	public void setNombreNota(String nombreNota) {
 		this.nombreNota = nombreNota;
 	}
-
 
 	public String getDescripcionNota() {
 		return descripcionNota;
 	}
 
-
 	public void setDescripcionNota(String descripcionNota) {
 		this.descripcionNota = descripcionNota;
 	}
 
-
-	public Persona getIdPersona() {
-		return idPersona;
+	public Persona getPersona() {
+		return persona;
 	}
 
-
-	public void setIdPersona(Persona idPersona) {
-		this.idPersona = idPersona;
+	public void setPersona(Persona persona) {
+		this.persona = persona;
 	}
-
-	
-	
-	
 }
