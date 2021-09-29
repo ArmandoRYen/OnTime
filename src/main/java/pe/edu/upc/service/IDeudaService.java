@@ -8,4 +8,5 @@ public interface IDeudaService {
 	public void insertar(Deuda deuda);
 	public List<Deuda> listar();
 	public void eliminar(int idDeuda);
+	List<Deuda>listarPorNombre(String nombre);
 }
