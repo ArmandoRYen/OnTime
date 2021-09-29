@@ -29,7 +29,7 @@ public class NotaDaoImpl implements INotaDao, Serializable {
 	@Override
 	public List<Nota> listar() {
 		List<Nota> lista = new ArrayList<Nota>(); 
-		Query q = em.createQuery("select no from Nota no");
+		Query q = em.createQuery("select n from Nota n");
 		lista =(List<Nota>) q.getResultList();		
 		return lista;
 	}

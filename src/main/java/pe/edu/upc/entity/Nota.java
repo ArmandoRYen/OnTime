@@ -28,7 +28,7 @@ public class Nota implements Serializable{
 	private String descripcionNota;
 	
 	@ManyToOne
-	@JoinColumn(name="Persona", nullable=false)
+	@JoinColumn(name="idPersona", nullable=false)
 	private Persona persona;
 
 	public Nota() {
