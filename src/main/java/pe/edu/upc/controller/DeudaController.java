@@ -15,7 +15,7 @@ import pe.edu.upc.service.IDeudaService;
 
 import pe.edu.upc.entity.Persona;
 import pe.edu.upc.service.IPersonaService;
-
+import pe.edu.upc.serviceimpl.LoginService;
 @Named
 @RequestScoped
 public class DeudaController implements Serializable {
@@ -36,6 +36,9 @@ public class DeudaController implements Serializable {
 	
 	private Persona persona;
 	List<Persona> listaPersonas;
+	
+	@Inject
+	private LoginService loginService;
 
 	@PostConstruct
 	public void init() {
@@ -50,15 +53,16 @@ public class DeudaController implements Serializable {
 		this.listarPersona();
 	}
 
-	public String nuevoDeuda() {
-		this.setDeuda(new Deuda());
-		return "Deuda.xhtml";
-	}
-
 	public void insertar() {
-		deService.insertar(deuda);
-		limpiarDeuda();
-		this.listarDeuda();
+		deuda.setIdDeuda(0);
+		Persona personaLogin=loginService.getPersona();
+		if(personaLogin!=null) {
+			deuda.setPersona(personaLogin);
+			deService.insertar(deuda);
+			limpiarDeuda();
+			this.listarDeuda();
+		}
+		
 	}
 
 	public void limpiarDeuda() {
@@ -68,7 +72,13 @@ public class DeudaController implements Serializable {
 
 
 	public void listarDeuda() {
-		listaDeudas = deService.listar();
+		Persona personaLogin=loginService.getPersona();
+		if(personaLogin==null) {
+			listaDeudas = deService.listar();
+		} else {
+			listaDeudas=deService.listarPorNombre(personaLogin.getNombrePersona());
+		}
+		
 	}
 	
 	public void listarPersona() {

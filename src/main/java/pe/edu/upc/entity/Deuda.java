@@ -36,7 +36,7 @@ public class Deuda implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="idPersona", nullable=false)
-	private Persona idPersona;
+	private Persona persona;
 
 	public Deuda() {
 		super();
@@ -44,14 +44,14 @@ public class Deuda implements Serializable{
 	}
 
 	public Deuda(int idDeuda, String nombreAcreedor, int moneyPago, Date fechaPago, Boolean pagoRealizado,
-			Persona idPersona) {
+			Persona persona) {
 		super();
 		this.idDeuda = idDeuda;
 		this.nombreAcreedor = nombreAcreedor;
 		MoneyPago = moneyPago;
 		FechaPago = fechaPago;
 		PagoRealizado = pagoRealizado;
-		this.idPersona = idPersona;
+		this.persona = persona;
 	}
 
 	public int getIdDeuda() {
@@ -94,14 +94,14 @@ public class Deuda implements Serializable{
 		PagoRealizado = pagoRealizado;
 	}
 
-	public Persona getIdPersona() {
-		return idPersona;
+	public Persona getPersona() {
+		return persona;
 	}
 
-	public void setIdPersona(Persona idPersona) {
-		this.idPersona = idPersona;
+	public void setPersona(Persona persona) {
+		this.persona = persona;
 	}
-	
+
 	
 
 }

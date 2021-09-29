@@ -38,9 +38,7 @@
 									styleClass="table table-bordered"
 									emptyMessage="No existen registros" rowIndexVar="item"
 									style="margin-bottom:0">
-									<p:column headerText="Id" sortBy="#{p.idDeuda}">
-										<h:outputText value="#{p.idDeuda}" />
-									</p:column>
+								
 									<p:column headerText="Acreedor" sortBy="#{p.nombreAcreedor}">
 										<h:outputText value="#{p.nombreAcreedor}" />
 									</p:column>
@@ -52,7 +50,10 @@
 									</p:column>
 
 									<p:column headerText="Acciones" exportable="false">
-										<h:commandLink value="Eliminar" actionListener="#{deudaController.eliminar(p)}" />
+										<p:commandButton class="ui-button-warning rounded-button"
+											icon="ui-icon-trash"  update="@form"
+											 action="#{deudaController.eliminar(p)}">
+										</p:commandButton>
 									</p:column>
 
 								</p:dataTable>
@@ -86,18 +87,10 @@
 						<br />
 						<h:outputLabel for="saldo" value="Saldo" />
 						<br />
-						<p:inputText autocomplete="off" id="Saldo"
-							styleClass="form-control" value="#{deudaController.deuda.pagoRealizado}" required="true"/><br />
+						<h:selectBooleanCheckbox id="allDay"
+							value="#{deudaController.deuda.pagoRealizado}" /><br />
 					
-					<h:outputLabel for="Persona" value="Nombre" />
-					<br />
-					<p:selectOneMenu id="Persona"
-						value="#{deudaController.deuda.idPersona}"
-						converter="omnifaces.SelectItemsConverter">
-						<f:selectItems value="#{deudaController.listaPersonas}" var="per"
-							itemLabel="#{per.nombrePersona}" itemVaule="#{per}" />
-					</p:selectOneMenu>
-					<br />
+					
 					<h:outputLabel for="fecha" value="Digite su Fecha" />
 					<br />
 					<p:calendar pattern="dd/MM/yyyy" timeZone="UTC" required="true"
@@ -106,7 +99,7 @@
 					<p:commandButton value="Guardar"
 						actionListener="#{deudaController.insertar()}"
 						styleClass="btn btn-primary" update="@form"
-						action="deuda?faces-redirect=true" />
+						action="pago?faces-redirect=true" />
 					<p:commandButton value="Cancelar" onclick="PF('dlg2').hide();" />
 
 				</div>

@@ -34,5 +34,9 @@ public class DeudaServiceImpl implements IDeudaService, Serializable{
 	public void eliminar(int idDeuda) {
 		deD.eliminar(idDeuda);		
 	}
+	@Override
+	public List<Deuda> listarPorNombre(String nombre){
+		return deD.listarPorNombrePersona(nombre);
+	}
 
 }
