@@ -84,6 +84,5 @@ public class Pendiente {
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
-	
 
 }
