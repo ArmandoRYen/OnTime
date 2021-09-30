@@ -33,13 +33,5 @@ public class EstadoDaoImpl implements IEstadoDao, Serializable {
 		lista =(List<Estado>) q.getResultList();		
 		return lista;
 	}
-	
-	@Transactional
-	@Override
-	public void eliminar(int idEstado) {
-		Estado estado = new Estado();
-		estado = em.getReference(Estado.class, idEstado);
-		em.remove(estado);
-	}
 
 }

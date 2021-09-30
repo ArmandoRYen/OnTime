@@ -32,19 +32,10 @@ public class EstadoController implements Serializable{
 	
 	public void insertar() {
 		esService.insertar(estado);
-		limpiarEstado();
 	}
 	public void listarEstado() {
 		ListaEstado = esService.listar();
 	}
-	public void limpiarEstado() {
-		this.init();
-	}
-	public void eliminar(Estado estado) {
-		esService.eliminar(estado.getIdEstado());
-		this.listarEstado();
-	}
-
 	public Estado getEstado() {
 		return estado;
 	}

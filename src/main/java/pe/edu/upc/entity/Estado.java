@@ -21,7 +21,17 @@ public class Estado implements Serializable{
 	private int idEstado;
 	
 	@Column(name="nombreEstado", nullable=false, length=30)
-	private String nombreEstado;
+	private String nombreEstado;	
+	
+	public Estado() {
+		super();
+	}
+
+	public Estado(int idEstado, String nombreEstado) {
+		super();
+		this.idEstado = idEstado;
+		this.nombreEstado = nombreEstado;
+	}
 
 	public int getIdEstado() {
 		return idEstado;
