@@ -27,7 +27,8 @@ public class PendienteController implements Serializable {
 	private IPendienteService peService;
 	
 	private Pendiente pendiente;
-	List<Pendiente> listaPendientes;	
+	List<Pendiente> listaPendientes;
+	List<String> listaTipoPendientes;
 
 	@Inject
 	private IPersonaService pService;
@@ -54,11 +55,15 @@ public class PendienteController implements Serializable {
 		
 		this.estado=new Estado();
 		this.listaestado = new ArrayList<Estado>();
-
+		
+		this.listaTipoPendientes = new ArrayList<String>();
+		
 		this.listaestado();
 		this.listarpendiente();
 		this.listarPersona();		
+		this.listarTipoPendiente();
 	}
+	
 
 	public void insertar() {
 		pendiente.setIdPendiente(0);
@@ -86,6 +91,15 @@ public class PendienteController implements Serializable {
 	
 	public void listarPersona() {
 		listaPersonas = pService.listar();
+	}
+	
+	public void listarTipoPendiente() {
+		listaTipoPendientes.add(new String ("Limpieza"));
+		listaTipoPendientes.add(new String ("Cocina"));
+		listaTipoPendientes.add(new String ("Compra"));
+		listaTipoPendientes.add(new String ("Trabajo"));
+		listaTipoPendientes.add(new String ("Universidad"));
+		listaTipoPendientes.add(new String ("Otro"));
 	}
 	
 	public void limpiarPendiente() {
@@ -132,6 +146,12 @@ public class PendienteController implements Serializable {
 	}
 	public void setListaestado(List<Estado> listaestado) {
 		this.listaestado = listaestado;
+	}
+	public List<String> getListaTipoPendientes() {
+		return listaTipoPendientes;
+	}
+	public void setListaTipoPendientes(List<String> listaTipoPendientes) {
+		this.listaTipoPendientes = listaTipoPendientes;
 	}
 	
 }

@@ -115,19 +115,22 @@
 				<div class="row">
 					<div class="col">
 						<h:outputLabel for="NPendiente" value="Nombre del Pendiente" />
-						<br />
+
 						<p:inputText autocomplete="off" id="nombrePendiente"
 							styleClass="form-control"
 							value="#{pendienteController.pendiente.nombrePendiente}"
 							required="true" />
 						<br />
-						<h:outputLabel for="TPendiente" value="Tipo de Pendiente" />
-						<br />
-						<p:inputText autocomplete="off" id="tipoPendiente"
-							styleClass="form-control"
+						
+						<h:outputLabel for="TipoPendienteSelect" value="Tipo de Pendiente"
+						styleClass="control-label" />
+						<p:selectOneMenu id="TipoPendienteSelect"
 							value="#{pendienteController.pendiente.nombreTipoPendiente}"
-							required="true" />
-						<br />					
+							converter="omnifaces.SelectItemsConverter">
+							<f:selectItems value="#{pendienteController.listaTipoPendientes}"/>
+						</p:selectOneMenu>	
+														
+						<br />
 						
 						<h:outputLabel for="estadoSelect" value="Estado" 
 						styleClass="control-label" />
