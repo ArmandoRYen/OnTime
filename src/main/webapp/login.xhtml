@@ -19,7 +19,7 @@
 				<div class="forms-wrap">
 					<h:form class="sign-in-form">
 						<div class="logo">
-							<img src="resources/img/logo.png" alt="ontime" />
+							<img src="resources/img/logo.png" alt="easyclass" />
 						</div>
 
 						<div class="heading">
@@ -31,24 +31,23 @@
 						<div class="actual-form">
 							<div class="input-wrap">
 								<p:inputText autocomplete="off" id="nombreIngreso"
-									styleClass="input-field"
+									styleClass="form-control" class="input-field"
 									value="#{personaController.personaIngreso.nombrePersona}"
 									required="true" />
-									<label>Nombre</label>
-									
 							</div>
 
 							<div class="input-wrap">
 								<p:inputText autocomplete="off" id="contrasenaIngreso"
-									styleClass="input-field"
+									styleClass="form-control" class="input-field"
 									value="#{personaController.personaIngreso.contrasenaPersona}"
 									required="true" />
 								<label>Password</label>
 							</div>
 
 							<div>
-								<p:commandButton action="#{personaController.login2()}" styleClass="sign-btn" value="Ingresar"> 
-								</p:commandButton>
+								<h:commandLink action="#{personaController.login2()}">
+									Ingresar
+								</h:commandLink>
 								
 							</div>
 
@@ -61,7 +60,7 @@
 
 					<h:form class="sign-up-form">
 						<div class="logo">
-							<img src="resources/img/logo.png" alt="ontime" />
+							<img src="resources/img/logo.png" alt="easyclass" />
 
 						</div>
 
@@ -74,7 +73,7 @@
 						<div class="actual-form">
 							<div class="input-wrap">
 								<p:inputText autocomplete="off" id="nombre"
-									styleClass="input-field"
+									styleClass="form-control" class="input-field"
 									value="#{personaController.personaNuevo.nombrePersona}"
 									required="true" />
 
@@ -83,7 +82,7 @@
 
 							<div class="input-wrap">
 								<p:inputText autocomplete="off" id="tipoPersona"
-									styleClass="input-field"
+									styleClass="form-control" class="input-field"
 									value="#{personaController.personaNuevo.tipoPersona}"
 									required="true" />
 
@@ -92,7 +91,7 @@
 
 							<div class="input-wrap">
 								<p:inputText autocomplete="off" id="sueldo"
-									styleClass="input-field"
+									styleClass="form-control" class="input-field"
 									value="#{personaController.personaNuevo.sueldoPersona}"
 									required="true" />
 
@@ -101,7 +100,7 @@
 
 							<div class="input-wrap">
 								<p:inputText autocomplete="off" id="contrasena"
-									styleClass="input-field"
+									styleClass="form-control" class="input-field"
 									value="#{personaController.personaNuevo.contrasenaPersona}"
 									required="true" />
 

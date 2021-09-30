@@ -179,18 +179,6 @@ a {
 }
 
 
-.btn {
-  display: inline-block;
-  width: 100%;
-  height: 43px;
-  background-color: #151111;
-  border: none;
-  cursor: pointer;
-  border-radius: 0.8rem;
-  font-size: 0.8rem;
-  margin-bottom: 2rem;
-  transition: 0.3s;
-}
 
 .active {
     color: var(--naranja-color)
