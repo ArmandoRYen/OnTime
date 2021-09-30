@@ -83,6 +83,13 @@ public class FotoController implements Serializable {
 		ftService.eliminar(foto.getIdFoto());
 		this.listarFoto();
 	}
+	public void findByName() {
+		if(foto.getNombreFoto().isEmpty()) {
+			this.listarFoto();
+		}else {
+			listaFotos=this.ftService.findbyName(this.getFoto());
+		}
+	}
 
 	public TipoEvento getTipoevento() {
 		return tipoevento;

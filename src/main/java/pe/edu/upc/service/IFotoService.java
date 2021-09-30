@@ -8,4 +8,5 @@ public interface IFotoService {
 	public void insertar(Foto foto);
 	public List<Foto> listar();
 	public void eliminar(int idFoto);
+	public List<Foto>findbyName(Foto f);
 }
