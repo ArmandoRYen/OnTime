@@ -173,12 +173,17 @@ a {
   padding: .7rem;
   margin: 1rem;
 }
-.chardiv {
-	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  	background-color: white;
-    margin: 1rem;
-  	min-height: 33rem 
+
+.midivtabla{
+	
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: white;
+  padding: .7rem;
+  margin: 1rem;  	
+  height: 18rem; 
+  
 }
+
 
 
 

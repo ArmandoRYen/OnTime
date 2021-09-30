@@ -16,26 +16,21 @@
 </h>
 <ui:composition template="master.xhtml">
 	<ui:define name="content">
+	<h:form>
 		<div class="container">
 			<div class="row">
 				<div class="midiv">
-					<h:form>
-						<div class="col">
 							<p:commandButton value="Agregar" type="button"
-								styleClass="btn btn-secondary" onclick="PF('dlg2').show();"></p:commandButton>
-						</div>
-					</h:form>
+								styleClass="btnA" onclick="PF('dlg2').show();"></p:commandButton>
 				</div>
 			</div>
 
-			<h:form>
 				<div class="row">
 					<div class="midiv">
 						<div class="contenedor mb-5 mt-3">
-							<div class="table table-striped table-bordered mydatatable ">
+							<div class="table table-striped table-bordered mydatatable overflow-auto" style="height: 26rem">
 								<p:dataTable id="pago" var="p"
 									value="#{deudaController.listaDeudas}"
-									styleClass="table table-bordered"
 									emptyMessage="No existen registros" rowIndexVar="item"
 									style="margin-bottom:0">
 								
@@ -64,10 +59,11 @@
 				</div>
 
 
-			</h:form>
 
 
 		</div>
+</h:form>
+		
 		<p:dialog header="Registro de Pagos" widgetVar="dlg2" modal="true"
 			height="30rem">
 			<h:form>
