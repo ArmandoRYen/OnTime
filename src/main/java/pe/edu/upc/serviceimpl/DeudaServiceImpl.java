@@ -38,5 +38,9 @@ public class DeudaServiceImpl implements IDeudaService, Serializable{
 	public List<Deuda> listarPorNombre(String nombre){
 		return deD.listarPorNombrePersona(nombre);
 	}
+	@Override
+	public List<Deuda>findbyName(Deuda d){
+		return deD.find(d);
+	}
 
 }

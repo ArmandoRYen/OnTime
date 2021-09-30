@@ -50,5 +50,15 @@ public class DeudaDaoImpl implements IDeudaDao, Serializable {
 		lista=(List<Deuda>) q.getResultList();
 		return lista;
 	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Deuda> find(Deuda d) {
+		List<Deuda> lista=new ArrayList<Deuda>();
+			Query q = em.createQuery("select de from Deuda de where  de.nombreAcreedor like ?1");
+			q.setParameter(1,"%"+d.getNombreAcreedor() +"%");
+			lista=(List<Deuda>) q.getResultList();
+		
+		return lista;
+	}
 
 }
