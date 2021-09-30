@@ -94,6 +94,13 @@ public class DeudaController implements Serializable {
 		deService.eliminar(deuda.getIdDeuda());
 		this.listarDeuda();
 	}
+	public void findByName() {
+		if(deuda.getNombreAcreedor().isEmpty()) {
+			this.listarDeuda();
+		}else {
+			listaDeudas=this.deService.findbyName(this.getDeuda());
+		}
+	}
 
 	public Deuda getDeuda() {
 		return deuda;

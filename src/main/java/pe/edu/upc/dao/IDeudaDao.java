@@ -9,5 +9,6 @@ public interface IDeudaDao {
 	public List<Deuda> listar();
 	public void eliminar(int idDeuda);
 	List<Deuda>listarPorNombrePersona(String nombre);
+	public List<Deuda> find(Deuda d);
 	
 }

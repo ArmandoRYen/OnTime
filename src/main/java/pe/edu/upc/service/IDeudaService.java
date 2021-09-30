@@ -9,4 +9,5 @@ public interface IDeudaService {
 	public List<Deuda> listar();
 	public void eliminar(int idDeuda);
 	List<Deuda>listarPorNombre(String nombre);
+	public List<Deuda> findbyName(Deuda d);
 }
