@@ -245,7 +245,7 @@ public class EventoController implements Serializable {
         ChartData data = new ChartData();
 
         RadarChartDataSet radarDataSet = new RadarChartDataSet();
-        radarDataSet.setLabel("My First Dataset");
+        radarDataSet.setLabel("Complejidad");
         radarDataSet.setFill(true);
         radarDataSet.setBackgroundColor("rgba(255, 99, 132, 0.2)");
         radarDataSet.setBorderColor("rgb(255, 99, 132)");
@@ -254,24 +254,18 @@ public class EventoController implements Serializable {
         radarDataSet.setPointHoverBackgroundColor("#fff");
         radarDataSet.setPointHoverBorderColor("rgb(255, 99, 132)");
         List<Number> dataVal = new ArrayList<>();
-        dataVal.add(65);
-        dataVal.add(59);
-        dataVal.add(90);
-        dataVal.add(81);
-        dataVal.add(56);
-        dataVal.add(55);
-        dataVal.add(40);
+        List<String> labels = new ArrayList<>();
+
+
+		for(int i = 0; i < listaTipoEventos.size(); i++) {
+			for(int j = 0; j < listaEventos.size(); j++) {
+					dataVal.add(listaEventos.get(j).getComplejidadEvento());									
+		}
+			labels.add(listaTipoEventos.get(i).getNombreTipoEvento());
+			
+			}
         radarDataSet.setData(dataVal);
         data.addChartDataSet(radarDataSet);
-
-        List<String> labels = new ArrayList<>();
-        labels.add("Eating");
-        labels.add("Drinking");
-        labels.add("Sleeping");
-        labels.add("Designing");
-        labels.add("Coding");
-        labels.add("Cycling");
-        labels.add("Running");
         data.setLabels(labels);
 
         /* Options */
@@ -299,22 +293,26 @@ public class EventoController implements Serializable {
 
         DonutChartDataSet dataSet = new DonutChartDataSet();
         List<Number> values = new ArrayList<>();
-        values.add(300);
-        values.add(50);
-        values.add(100);
+        List<String> bgColors = new ArrayList<>();        
+        List<String> labels = new ArrayList<>();
+        
+		for(int i = 0; i < listaTipoEventos.size(); i++) {
+			for(int j = 0; j < listaEventos.size(); j++) {
+					values.add(listaEventos.get(j).getComplejidadEvento());					
+				
+			}
+			labels.add(listaTipoEventos.get(i).getNombreTipoEvento());
+		
+		
+		}
         dataSet.setData(values);
 
-        List<String> bgColors = new ArrayList<>();
         bgColors.add("rgb(255, 99, 132)");
         bgColors.add("rgb(54, 162, 235)");
         bgColors.add("rgb(255, 205, 86)");
         dataSet.setBackgroundColor(bgColors);
 
         data.addChartDataSet(dataSet);
-        List<String> labels = new ArrayList<>();
-        labels.add("Red");
-        labels.add("Blue");
-        labels.add("Yellow");
         data.setLabels(labels);
 
         donutModel.setData(data);
