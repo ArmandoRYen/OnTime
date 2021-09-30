@@ -41,5 +41,14 @@ public class FotoDaoImpl implements IFotoDao, Serializable {
 		foto = em.getReference(Foto.class, idFoto);
 		em.remove(foto);
 	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Foto>find(Foto f){
+		List<Foto> lista=new ArrayList<Foto>();
+		Query q = em.createQuery("select ft from Foto ft where ft.nombreFoto like ?1");
+		q.setParameter(1, "%"+f.getNombreFoto()+"%");
+		lista=(List<Foto>) q.getResultList();
+		return lista;
+	}
 
 }

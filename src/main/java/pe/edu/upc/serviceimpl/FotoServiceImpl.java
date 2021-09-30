@@ -35,5 +35,8 @@ public class FotoServiceImpl implements IFotoService, Serializable{
 	public void eliminar(int idFoto) {
 		ftD.eliminar(idFoto);		
 	}
-
+	@Override
+	public List<Foto>findbyName(Foto f){
+		return ftD.find(f);
+	}
 }

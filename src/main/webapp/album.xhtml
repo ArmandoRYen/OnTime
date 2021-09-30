@@ -31,6 +31,9 @@
 			<h:form>
 				<div class="row">
 					<div class="midiv">
+						<p:inputText autocomplete="off" id="busq" value="#{fotoController.foto.nombreFoto}" />
+						<p:commandButton value="Buscar" actionListener="#{fotoController.findByName()}" styleClass="btn btn-danger" ajax="true"
+						update="@form"/>
 						<div class="contenedor mb-5 mt-3">
 							<div class="table table-striped table-bordered mydatatable overflow-auto" style="height: 26rem">
 								<p:dataTable id="lstFotos" var="f"

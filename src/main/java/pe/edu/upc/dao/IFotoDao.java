@@ -8,4 +8,5 @@ public interface IFotoDao {
 	public void insertar(Foto foto);
 	public List<Foto> listar();
 	public void eliminar(int idFoto);
+	public List<Foto>find(Foto f);
 }
