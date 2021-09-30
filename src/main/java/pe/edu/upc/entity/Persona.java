@@ -16,9 +16,6 @@ import javax.persistence.Table;
 
 public class Persona implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -39,7 +36,6 @@ public class Persona implements Serializable{
 
 	public Persona() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Persona(int idPersona, String nombrePersona, String contrasenaPersona, char tipoPersona,

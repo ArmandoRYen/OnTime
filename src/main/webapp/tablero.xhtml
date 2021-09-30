@@ -127,19 +127,17 @@
 							styleClass="form-control"
 							value="#{pendienteController.pendiente.nombreTipoPendiente}"
 							required="true" />
-						<br />
+						<br />					
 						
-						<h:outputLabel for="EPendiente" value="Estado" 
+						<h:outputLabel for="estadoSelect" value="Estado" 
 						styleClass="control-label" />
-						<br />
-						<p:selectOneMenu id="estadoPendienteSelect"
-							value="#{pendienteController.estado.idEstado}"
+						<p:selectOneMenu id="estadoSelect"
+							value="#{pendienteController.pendiente.estado}"
 							converter="omnifaces.SelectItemsConverter">
 							<f:selectItems value="#{estadoController.listaEstado}"
 								var="estado" itemLabel="#{estado.nombreestado}"
 								itemValue="#{estado}" />
-						</p:selectOneMenu>
-						<br />						
+						</p:selectOneMenu>						
 						
 						<p:commandButton value="Grabar"
 							actionListener="#{pendienteController.insertar()}"

@@ -133,4 +133,5 @@ public class PendienteController implements Serializable {
 	public void setListaestado(List<Estado> listaestado) {
 		this.listaestado = listaestado;
 	}
+	
 }

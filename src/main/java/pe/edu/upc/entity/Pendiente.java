@@ -1,5 +1,7 @@
 package pe.edu.upc.entity;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -85,4 +87,23 @@ public class Pendiente {
 		this.persona = persona;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(estado, idPendiente, nombrePendiente, nombreTipoPendiente, persona);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pendiente other = (Pendiente) obj;
+		return Objects.equals(estado, other.estado) && idPendiente == other.idPendiente
+				&& Objects.equals(nombrePendiente, other.nombrePendiente)
+				&& Objects.equals(nombreTipoPendiente, other.nombreTipoPendiente)
+				&& Objects.equals(persona, other.persona);
+	}
 }
