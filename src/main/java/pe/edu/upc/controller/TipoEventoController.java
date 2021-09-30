@@ -61,7 +61,13 @@ public class TipoEventoController implements Serializable{
 	}
 
 	
-	
+	public void findByName() {
+		if(tipoevento.getNombreTipoEvento().isEmpty()) {
+			this.listar();
+		}else {
+			ListaTipoEvento=this.teService.findByName(this.getTipoevento());
+		}
+	}
 	
 
 }

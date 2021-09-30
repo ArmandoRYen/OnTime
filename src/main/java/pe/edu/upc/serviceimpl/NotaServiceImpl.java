@@ -39,4 +39,10 @@ public class NotaServiceImpl implements INotaService, Serializable{
 	public List<Nota> listarPorNombre(String nombre) {
 		return nD.listarPorNombrePersona(nombre);
 	}
+
+	@Override
+	public List<Nota> findByName(Nota nota) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

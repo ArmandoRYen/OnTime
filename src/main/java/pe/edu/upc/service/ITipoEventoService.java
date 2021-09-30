@@ -9,5 +9,6 @@ public interface ITipoEventoService {
 	public List<TipoEvento> listar();
 	public void eliminar (int idTipoevento);
 	List<TipoEvento> listarPorNombre(String nombre);
+	public List<TipoEvento> findByName(TipoEvento tipoevento);
 
 }

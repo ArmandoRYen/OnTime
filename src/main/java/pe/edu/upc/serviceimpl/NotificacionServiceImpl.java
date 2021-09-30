@@ -40,4 +40,10 @@ public class NotificacionServiceImpl implements INotificacionService, Serializab
 	public List<Notificacion> listarPorNombre(String nombre) {
 		return ntD.listarPorNombrePersona(nombre);
 	}
+
+	@Override
+	public List<Notificacion> findByName(Notificacion notificacion) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

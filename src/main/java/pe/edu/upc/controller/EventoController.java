@@ -320,6 +320,15 @@ public class EventoController implements Serializable {
 		
 		
 	}
+	public void findByName() {
+		if(evento.getNombreEvento().isEmpty()) {
+			this.listarEvento();
+		}else {
+			listaEventos=this.evService.findByName(this.getEvento());
+		}
+	}
+	
+	
 	
 	public DonutChartModel getDonutModel() {
 		return donutModel;

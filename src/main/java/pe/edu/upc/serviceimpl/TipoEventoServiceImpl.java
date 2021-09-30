@@ -43,4 +43,10 @@ public class TipoEventoServiceImpl implements ITipoEventoService, Serializable{
 		
 	}
 
+	@Override
+	public List<TipoEvento> findByName(TipoEvento tipoevento) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

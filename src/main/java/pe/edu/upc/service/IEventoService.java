@@ -9,4 +9,5 @@ public interface IEventoService {
 	public List<Evento> listar();
 	public void eliminar(int idEvento);
 	List<Evento> listarPorNombre(String nombre);
+	public List<Evento> findByName(Evento evento);
 }

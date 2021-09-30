@@ -9,4 +9,5 @@ public interface INotificacionService {
 	public List<Notificacion> listar();
 	public void eliminar(int idNotificacion);
 	List<Notificacion> listarPorNombre(String nombre);
+	public List<Notificacion> findByName(Notificacion notificacion);
 }

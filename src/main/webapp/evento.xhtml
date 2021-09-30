@@ -26,6 +26,9 @@
 								<div class="col">
 									<p:commandButton value="Agregar" type="button"
 										styleClass="btnA" onclick="PF('dlg2').show();" />
+										<p:inputText autocomplete="off" id="busq" value="#{tipoEventoController.tipoevento.nombreTipoEvento}" />
+										<p:commandButton value="Buscar" actionListener="#{tipoEventoController.findByName()}" styleClass="btn btn-danger" ajax="true"
+										update="@form"/>
 								</div>
 									<div class="table table-striped table-bordered overflow-auto" style="height: 12rem">
 										<p:dataTable id="lstTipoEvento" var="t"
@@ -65,6 +68,9 @@
 								<div class="col">
 									<p:commandButton value="Agregar" type="button"
 										styleClass="btnA" onclick="PF('dlg3').show();" />
+										<p:inputText autocomplete="off" id="busq2" value="#{eventoController.evento.nombreEvento}" />
+										<p:commandButton value="Buscar" actionListener="#{eventoController.findByName()}" styleClass="btn btn-danger" ajax="true"
+										update="@form"/>
 								</div>
 									<div class="table table-striped table-bordered overflow-auto" style="height: 12rem">
 										<p:dataTable id="lstEvento" var="e"

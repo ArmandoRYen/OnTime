@@ -70,6 +70,14 @@ public class NotificacionController implements Serializable {
 		}		
 	}
 	
+	public void findByName() {
+		if(notificacion.getNombreNotificacion().isEmpty()) {
+			this.listarNotificacion();
+		}else {
+			listaNotificaciones=this.ntService.findByName(this.getNotificacion());
+		}
+	}
+	
 	public void listarEvento() {
 		Persona personaLogin = loginService.getPersona();
 		if (personaLogin == null) {

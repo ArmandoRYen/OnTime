@@ -35,13 +35,16 @@
   <div class="row">
 	    <div class="col-8">
     	   <div class ="midiv" >
-    	   PENDIENTES
+    	   ESTADO de Pendiente
     	   <div class="container">
 						<h:form>
 							<div class="row">
 								<div class="col" align = "right">
 									<p:commandButton value="Agregar" type="button"
 										styleClass="btnA" onclick="PF('dlg3').show();" />
+										<p:commandButton value="Buscar" actionListener="#{fotoController.findByName()}" styleClass="btn btn-danger" ajax="true"
+						update="@form"/>
+										
 								</div>
 									<div class="table table-striped table-bordered overflow-auto" style="align-content: center; height:18rem">
 										<p:dataTable id="lstPendiente" var="p"
@@ -58,6 +61,12 @@
 											<p:column headerText="Estado" sortBy="#{p.estado.nombreestado}">
 												<h:outputText value="#{p.estado.nombreestado}" />
 											</p:column>
+											<p:column headerText="Acciones" exportable="false">
+										<p:commandButton class="ui-button-warning rounded-button"
+											icon="ui-icon-trash" update="@form"
+											action="#{pendienteController.eliminar(f)}">
+										</p:commandButton>
+									</p:column>
 										</p:dataTable>
 
 									</div>
@@ -69,15 +78,18 @@
     	<div class="col-4">
     	   <div class ="midiv">
     	   NOTAS
-    	   <div class="container">
+    	   <div class="container ">
 						<h:form>
-							<div class="row">
+							<div class="row overflow-auto">
 								<div class="col" align = "right">
 									<p:commandButton value="Agregar" type="button"
 										styleClass="btnA" onclick="PF('dlg2').show();" />
+										<p:inputText autocomplete="off" id="busq" value="#{notaController.nota.nombreNota}" />
+										<p:commandButton value="Buscar" actionListener="#{notaController.findByName()}" styleClass="btn btn-danger" ajax="true"
+										update="@form"/>
 								</div>
 								<div class="contenedor mb-5 mt-3">
-									<div class="table table-striped table-bordered mydatatable">
+									<div class="table table-striped table-bordered mydatatable" style="height: 10rem">
 										<p:dataTable id="lstNota" var="l"
 											value="#{notaController.listaNotas}"
 											styleClass="table table-bordered"
@@ -90,6 +102,13 @@
 											<p:column headerText="Descripcion" sortBy="#{l.descripcionNota}">
 												<h:outputText value="#{l.descripcionNota}" />
 											</p:column>
+											<p:column headerText="Acciones" exportable="false">
+										<p:commandButton class="ui-button-warning rounded-button"
+											icon="ui-icon-trash" update="@form"
+											action="#{notaController.eliminar(f)}">
+										</p:commandButton>
+									</p:column>
+											
 										</p:dataTable>
 
 									</div>

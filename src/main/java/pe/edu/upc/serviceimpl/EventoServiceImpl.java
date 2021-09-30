@@ -40,4 +40,10 @@ public class EventoServiceImpl implements IEventoService, Serializable{
 		evD.eliminar(idEvento);		
 	}
 
+	@Override
+	public List<Evento> findByName(Evento evento) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

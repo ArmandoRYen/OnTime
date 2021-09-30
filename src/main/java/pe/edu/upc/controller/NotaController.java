@@ -63,6 +63,14 @@ public class NotaController implements Serializable {
 		this.init();
 	}	
 
+	public void findByName() {
+		if(nota.getNombreNota().isEmpty()) {
+			this.listarNota();
+		}else {
+			listaNotas=this.nService.findByName(this.getNota());
+		}
+	}
+	
 	public void listarNota() {
 		Persona personaLogin = loginService.getPersona();
 		if(personaLogin == null) {			
