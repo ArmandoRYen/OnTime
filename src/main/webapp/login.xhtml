@@ -34,6 +34,7 @@
 									styleClass="form-control" class="input-field"
 									value="#{personaController.personaIngreso.nombrePersona}"
 									required="true" />
+									<label> Nombre</label>
 							</div>
 
 							<div class="input-wrap">
@@ -45,9 +46,9 @@
 							</div>
 
 							<div>
-								<h:commandLink action="#{personaController.login2()}">
-									Ingresar
-								</h:commandLink>
+								<p:commandButton action="#{personaController.login2()}" styleClass="sign-btn"
+									value="Ingresar"
+								/>
 								
 							</div>
 

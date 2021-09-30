@@ -16,7 +16,7 @@
 				</div>
 
 
-				<div class="col-7">
+				<div class="col-7 overflow-auto">
 					<div class="midiv">
 
 						<h:form>
@@ -25,11 +25,10 @@
 									<p:commandButton value="Agregar" type="button"
 										styleClass="btn btn-secondary" onclick="PF('dlg2').show();" />
 								</div>
-								<div class="contenedor mb-5 mt-3">
-									<div class="table table-striped table-bordered mydatatable">
+								<div class="contenedor mb-5 mt-3 ">
+									<div class="table table-striped table-bordered mydatatable  overflow-auto">
 										<p:dataTable id="lstTipoEvento" var="t"
 											value="#{eventoController.listaTipoEventos}"
-											styleClass="table table-bordered"
 											emptyMessage="No existen registros" rowIndexVar="item"
 											style="margin-bottom:0">
 
@@ -71,10 +70,9 @@
 										styleClass="btn btn-secondary" onclick="PF('dlg3').show();" />
 								</div>
 								<div class="contenedor mb-5 mt-3">
-									<div class="table table-striped table-bordered mydatatable">
+									<div class="table table-striped table-bordered mydatatable  overflow-auto">
 										<p:dataTable id="lstEvento" var="e"
 											value="#{eventoController.listaEventos}"
-											styleClass="table table-bordered"
 											emptyMessage="No existen registros" rowIndexVar="item"
 											style="margin-bottom:0">
 
