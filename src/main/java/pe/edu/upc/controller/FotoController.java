@@ -53,10 +53,7 @@ public class FotoController implements Serializable {
 
 	}
 
-	public String nuevoEvento() {
-		this.setFoto(new Foto());
-		return "Foto.xhtml";
-	}
+	
 
 	public void insertar() {
 		ftService.insertar(foto);
