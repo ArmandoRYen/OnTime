@@ -41,5 +41,15 @@ public class PruebaDaoImpl implements IPruebaDao, Serializable {
 		prueba = em.getReference(Prueba.class, idPrueba);
 		em.remove(prueba);
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Prueba> listarPorNombrePersona(String nombre) {
+		List<Prueba> lista =new ArrayList<Prueba>();
+		Query q =em.createQuery("select p from Prueba p where p.persona.nombrePersona like ?1");
+		q.setParameter(1, "%" + nombre + "%");
+		lista =(List<Prueba>) q.getResultList();
+		return lista;
+	}
 
 }

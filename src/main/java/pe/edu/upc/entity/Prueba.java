@@ -28,30 +28,28 @@ public class Prueba implements Serializable {
 	@JoinColumn(name="idTipoEvento", nullable=false)
 	private TipoEvento idTipoEvento;
 	
+	@ManyToOne
+	@JoinColumn(name="idPersona", nullable=false)
+	private Persona persona;
+	
 	@Column(name="numeroNota", nullable=false)
 	private Float numeroNota;
 	
 	@Column(name="Ponderado", nullable=false)
 	private Float Ponderado;
-	
-	@ManyToOne
-	@JoinColumn(name="idPersona", nullable=false)
-	private Persona idPersona;
 
 	public Prueba() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Prueba(int idPrueba, String nombrePrueba, TipoEvento idTipoEvento, Float numeroNota, Float ponderado,
-			Persona idPersona) {
+	public Prueba(int idPrueba, String nombrePrueba, TipoEvento idTipoEvento, Float numeroNota, Float ponderado) {
 		super();
 		this.idPrueba = idPrueba;
 		this.nombrePrueba = nombrePrueba;
 		this.idTipoEvento = idTipoEvento;
 		this.numeroNota = numeroNota;
 		Ponderado = ponderado;
-		this.idPersona = idPersona;
 	}
 
 	public int getIdPrueba() {
@@ -94,13 +92,16 @@ public class Prueba implements Serializable {
 		Ponderado = ponderado;
 	}
 
-	public Persona getIdPersona() {
-		return idPersona;
+	public Persona getPersona() {
+		return persona;
 	}
 
-	public void setIdPersona(Persona idPersona) {
-		this.idPersona = idPersona;
+	public void setPersona(Persona persona) {
+		this.persona = persona;
 	}
+
+	
+	
 	
 	
 

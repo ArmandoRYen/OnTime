@@ -8,4 +8,5 @@ public interface IPruebaService {
 	public void insertar(Prueba prueba);
 	public List<Prueba> listar();
 	public void eliminar(int idPrueba);
+	public List<Prueba> listarPorNombre(String nombre);
 }

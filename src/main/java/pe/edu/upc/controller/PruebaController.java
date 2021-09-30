@@ -14,9 +14,8 @@ import pe.edu.upc.service.IPruebaService;
 
 import pe.edu.upc.entity.TipoEvento;
 import pe.edu.upc.service.ITipoEventoService;
-
+import pe.edu.upc.serviceimpl.LoginService;
 import pe.edu.upc.entity.Persona;
-import pe.edu.upc.service.IPersonaService;
 
 @Named
 @RequestScoped
@@ -30,17 +29,14 @@ public class PruebaController implements Serializable {
 	@Inject
 	private IPruebaService prService;
 	
-	@Inject
-	private IPersonaService pService;
-
 	private TipoEvento tipoevento;
 	List<TipoEvento> listaTipoEventos;
 	
 	private Prueba prueba;
 	List<Prueba> listaPruebas;
 	
-	private Persona persona;
-	List<Persona> listaPersonas;
+	@Inject
+	private LoginService loginService;
 
 	@PostConstruct
 	public void init() {
@@ -50,49 +46,64 @@ public class PruebaController implements Serializable {
 		this.listaPruebas = new ArrayList<Prueba>();
 		this.prueba = new Prueba();
 		
-		this.listaPersonas = new ArrayList<Persona>();
-		this.persona = new Persona();
-
+		
 		this.listarTipoEvento();
 		this.listarPrueba();
-		this.listarPersona();
 	}
 
-	public String nuevoEvento() {
+	public String nuevoPrueba() {
 		this.setPrueba(new Prueba());
-		return "evento.xhtml";
+		return "pago.xhtml";
 	}
 
-	public void insertar() {
+	public void insertarPrueba() {
+		prueba.setPersona(loginService.getPersona());
 		prService.insertar(prueba);
 		limpiarPrueba();
 		this.listarPrueba();
 	}
 
+	public void insertarTipoEvento() {
+		tipoevento.setIdTipoEvento(0);
+		Persona personaLogin = loginService.getPersona();
+		if (personaLogin != null) {
+			System.out.println(personaLogin.getNombrePersona());
+			tipoevento.setPersona(personaLogin);
+			teService.insertar(tipoevento);
+			limpiarPrueba();
+			this.listarTipoEvento();
+		} else {
+			System.out.println("null");
+		}
+	}
+	
 	public void limpiarPrueba() {
 		this.init();
 	}
 
 	public void listarTipoEvento() {
-		listaTipoEventos = teService.listar();
+		Persona personaLogin = loginService.getPersona();
+		if (personaLogin == null) {
+			listaTipoEventos = teService.listar();
+		} else {
+			listaTipoEventos = teService.listarPorNombre(personaLogin.getNombrePersona());
+		}
+
 	}
 
 	public void listarPrueba() {
-		listaPruebas = prService.listar();
+		Persona personaLogin = loginService.getPersona();
+		if (personaLogin == null) {
+			listaPruebas = prService.listar();
+		} else {
+			listaPruebas = prService.listarPorNombre(personaLogin.getNombrePersona());
+		}
 	}
 	
-	public void listarPersona() {
-		listaPersonas = pService.listar();
-	}
-
 	public void limpiarTipoEvento() {
 		this.init();
 	}
 	
-	public void limpiarPersona() {
-		this.init();
-	}
-
 	public void eliminar(Prueba prueba) {
 		prService.eliminar(prueba.getIdPrueba());
 		this.listarPrueba();
@@ -130,21 +141,6 @@ public class PruebaController implements Serializable {
 		this.listaPruebas = listaPruebas;
 	}
 
-	public Persona getPersona() {
-		return persona;
-	}
-
-	public void setPersona(Persona persona) {
-		this.persona = persona;
-	}
-
-	public List<Persona> getListaPersonas() {
-		return listaPersonas;
-	}
-
-	public void setListaPersonas(List<Persona> listaPersonas) {
-		this.listaPersonas = listaPersonas;
-	}
 
 	
 

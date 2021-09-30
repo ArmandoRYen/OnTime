@@ -34,5 +34,10 @@ public class PruebaServiceImpl implements IPruebaService, Serializable{
 	public void eliminar(int idPrueba) {
 		prD.eliminar(idPrueba);		
 	}
+	
+	@Override
+	public List<Prueba> listarPorNombre(String nombre) {
+		return prD.listarPorNombrePersona(nombre);
+	}
 
 }
