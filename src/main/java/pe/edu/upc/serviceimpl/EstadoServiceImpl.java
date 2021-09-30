@@ -29,10 +29,4 @@ public class EstadoServiceImpl implements IEstadoService, Serializable{
 	public List<Estado> listar() {
 		return esD.listar();
 	}
-
-	@Override
-	public void eliminar(int idEstado) {
-		esD.eliminar(idEstado);		
-	}
-
 }

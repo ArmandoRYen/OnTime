@@ -8,4 +8,5 @@ public interface IPendienteDao {
 	public void insertar (Pendiente pendiente);
 	public List<Pendiente> listar();
 	public void eliminar(int idpendiente);	
+	List<Pendiente> listarPorNombrePersona(String nombre);
 }

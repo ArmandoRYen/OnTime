@@ -10,12 +10,12 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entity.Foto;
+import pe.edu.upc.entity.Persona;
 import pe.edu.upc.service.IFotoService;
 
 import pe.edu.upc.entity.TipoEvento;
 import pe.edu.upc.service.ITipoEventoService;
-
-
+import pe.edu.upc.serviceimpl.LoginService;
 
 @Named
 @RequestScoped
@@ -29,7 +29,8 @@ public class FotoController implements Serializable {
 	@Inject
 	private IFotoService ftService;
 	
-
+	@Inject
+	private LoginService loginService;
 
 	private TipoEvento tipoevento;
 	List<TipoEvento> listaTipoEventos;
@@ -37,7 +38,6 @@ public class FotoController implements Serializable {
 	private Foto foto;
 	List<Foto> listaFotos;
 	
-
 	@PostConstruct
 	public void init() {
 		this.listaTipoEventos = new ArrayList<TipoEvento>();
@@ -46,16 +46,9 @@ public class FotoController implements Serializable {
 		this.listaFotos = new ArrayList<Foto>();
 		this.foto = new Foto();
 		
-
-
 		this.listarTipoEvento();
 		this.listarFoto();
 
-	}
-
-	public String nuevoEvento() {
-		this.setFoto(new Foto());
-		return "Foto.xhtml";
 	}
 
 	public void insertar() {
@@ -69,20 +62,22 @@ public class FotoController implements Serializable {
 	}
 
 	public void listarTipoEvento() {
-		listaTipoEventos = teService.listar();
+		Persona personaLogin = loginService.getPersona();
+		if (personaLogin == null) {
+			listaTipoEventos = teService.listar();
+		} else {
+			listaTipoEventos = teService.listarPorNombre(personaLogin.getNombrePersona());
+		}
+
 	}
 
 	public void listarFoto() {
 		listaFotos = ftService.listar();
 	}
 	
-
-
 	public void limpiarTipoEvento() {
 		this.init();
 	}
-	
-
 
 	public void eliminar(Foto foto) {
 		ftService.eliminar(foto.getIdFoto());

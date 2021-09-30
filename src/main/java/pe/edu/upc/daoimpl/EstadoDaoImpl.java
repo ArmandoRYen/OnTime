@@ -14,7 +14,7 @@ import pe.edu.upc.entity.Estado;
 
 public class EstadoDaoImpl implements IEstadoDao, Serializable {
 	
-		private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
@@ -29,17 +29,9 @@ public class EstadoDaoImpl implements IEstadoDao, Serializable {
 	@Override
 	public List<Estado> listar() {
 		List<Estado> lista = new ArrayList<Estado>(); 
-		Query q = em.createQuery("select es from Estado es");
+		Query q = em.createQuery("select e from Estado e");
 		lista =(List<Estado>) q.getResultList();		
 		return lista;
-	}
-	
-	@Transactional
-	@Override
-	public void eliminar(int idEstado) {
-		Estado estado = new Estado();
-		estado = em.getReference(Estado.class, idEstado);
-		em.remove(estado);
 	}
 
 }

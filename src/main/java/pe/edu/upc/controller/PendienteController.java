@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import pe.edu.upc.dao.IEstadoDao;
 import pe.edu.upc.entity.Estado;
@@ -13,7 +15,10 @@ import pe.edu.upc.entity.Pendiente;
 import pe.edu.upc.entity.Persona;
 import pe.edu.upc.service.IPendienteService;
 import pe.edu.upc.service.IPersonaService;
+import pe.edu.upc.serviceimpl.LoginService;
 
+@Named
+@RequestScoped
 public class PendienteController implements Serializable {	
 
 	private static final long serialVersionUID = 1L;
@@ -36,6 +41,9 @@ public class PendienteController implements Serializable {
 	private Estado estado;
 	List<Estado> listaestado;
 	
+	@Inject
+	private LoginService loginService;
+	
 	@PostConstruct
 	public void init() {
 		this.listaPendientes = new ArrayList<Pendiente>();
@@ -53,13 +61,23 @@ public class PendienteController implements Serializable {
 	}
 
 	public void insertar() {
-		peService.insertar(pendiente);
-		limpiarPendiente();
-		this.listarpendiente();
+		pendiente.setIdPendiente(0);
+		Persona personaLogin = loginService.getPersona();
+		if(personaLogin != null) {
+			pendiente.setPersona(personaLogin);
+			peService.insertar(pendiente);
+			limpiarPendiente();
+			this.listarpendiente();
+		}
 	}
 
 	public void listarpendiente() {
-		listaPendientes = peService.listar();
+		Persona personaLogin = loginService.getPersona();
+		if(personaLogin == null) {	
+			listaPendientes = peService.listar();
+		} else {
+			listaPendientes = peService.listarPorNombre(personaLogin.getNombrePersona()); 
+		}
 	}
 	
 	public void listaestado() {

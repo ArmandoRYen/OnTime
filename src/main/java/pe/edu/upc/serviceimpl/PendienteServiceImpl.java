@@ -35,5 +35,9 @@ public class PendienteServiceImpl implements IPendienteService, Serializable {
 		pD.eliminar(idPendiente);
 	}
 
+	@Override
+	public List<Pendiente> listarPorNombre(String nombre) {
+		return pD.listarPorNombrePersona(nombre);
+	}
 
 }

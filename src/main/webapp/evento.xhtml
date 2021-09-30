@@ -41,10 +41,17 @@
 												<h:outputText value="#{t.nombreTipoEvento}" />
 											</p:column>
 
-											<p:column headerText="Color" sortBy="#{t.colorTipoEvento}">
+											<p:column headerText="Descripcion" sortBy="#{t.colorTipoEvento}">
 												<h:outputText value="#{t.colorTipoEvento}" />
 											</p:column>
 
+											<p:column headerText="Acciones" exportable="false">
+										<p:commandButton class="ui-button-warning rounded-button"
+											icon="ui-icon-trash"  update="@form"
+											 action="#{tipoEventoController.eliminar(t)}">
+										</p:commandButton>
+										
+									</p:column>
 										</p:dataTable>
 
 									</div>
@@ -102,6 +109,14 @@
 												sortBy="#{e.persona.nombrePersona}">
 												<h:outputText value="#{e.persona.nombrePersona}" />
 											</p:column>
+											
+											<p:column headerText="Acciones" exportable="false">
+										<p:commandButton class="ui-button-warning rounded-button"
+											icon="ui-icon-trash"  update="@form"
+											 action="#{eventoController.eliminar(e)}">
+										</p:commandButton>
+										
+									</p:column>
 
 										</p:dataTable>
 
