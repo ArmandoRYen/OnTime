@@ -12,7 +12,6 @@ import javax.inject.Named;
 import pe.edu.upc.entity.Notificacion;
 import pe.edu.upc.entity.Persona;
 import pe.edu.upc.service.INotificacionService;
-import pe.edu.upc.service.IPersonaService;
 import pe.edu.upc.serviceimpl.LoginService;
 import pe.edu.upc.entity.Evento;
 import pe.edu.upc.service.IEventoService;
@@ -29,17 +28,11 @@ public class NotificacionController implements Serializable {
 	@Inject
 	private IEventoService evService;
 	
-	@Inject
-	private IPersonaService pService;
-	
 	private Notificacion notificacion;
 	List<Notificacion> listaNotificaciones;
 	
 	private Evento evento;
 	List<Evento> listaEventos;
-
-	private Persona persona;
-	List<Persona> listaPersonas;
 	
 	@Inject
 	private LoginService loginService;
@@ -52,24 +45,16 @@ public class NotificacionController implements Serializable {
 		
 		this.listaEventos = new ArrayList<Evento>();
 		this.evento = new Evento();
-
-		this.listaPersonas = new ArrayList<Persona>();
-		this.persona = new Persona();	
 		
 		this.listarNotificacion();
 		this.listarEvento();
-		this.listarPersona();
 	}
 
 	public void insertar() {
-		notificacion.setIdNotificacion(0);
-		Persona personaLogin = loginService.getPersona();
-		if(personaLogin != null) {
-			notificacion.setPersona(personaLogin);
-			ntService.insertar(notificacion);
-			limpiarNotificacion();
-			this.listarNotificacion();
-		}
+		notificacion.setPersona(loginService.getPersona());
+		ntService.insertar(notificacion);
+		limpiarNotificacion();
+		this.listarNotificacion();		
 	}
 
 	public void limpiarNotificacion() {
@@ -86,11 +71,12 @@ public class NotificacionController implements Serializable {
 	}
 	
 	public void listarEvento() {
-		listaEventos = evService.listar();
-	}
-	
-	public void listarPersona() {
-		listaPersonas = pService.listar();
+		Persona personaLogin = loginService.getPersona();
+		if (personaLogin == null) {
+			listaEventos = evService.listar();
+		} else {
+			listaEventos = evService.listarPorNombre(personaLogin.getNombrePersona());
+		}
 	}
 	
 	public void eliminar(Notificacion notificacion) {
@@ -101,51 +87,26 @@ public class NotificacionController implements Serializable {
 	public Notificacion getNotificacion() {
 		return notificacion;
 	}
-
 	public void setNotificacion(Notificacion notificacion) {
 		this.notificacion = notificacion;
 	}
-
 	public List<Notificacion> getListaNotificaciones() {
 		return listaNotificaciones;
 	}
-
 	public void setListaNotificaciones(List<Notificacion> listaNotificaciones) {
 		this.listaNotificaciones = listaNotificaciones;
 	}
-
 	public Evento getEvento() {
 		return evento;
 	}
-
 	public void setEvento(Evento evento) {
 		this.evento = evento;
 	}
-
 	public List<Evento> getListaEventos() {
 		return listaEventos;
 	}
-
 	public void setListaEventos(List<Evento> listaEventos) {
 		this.listaEventos = listaEventos;
 	}
-	
-	public Persona getPersona() {
-		return persona;
-	}
-
-	public void setPersona(Persona persona) {
-		this.persona = persona;
-	}
-
-	public List<Persona> getListaPersonas() {
-		return listaPersonas;
-	}
-
-	public void setListaPersonas(List<Persona> listaPersonas) {
-		this.listaPersonas = listaPersonas;
-	}
-
-
 }
 

@@ -50,11 +50,6 @@ public class PruebaController implements Serializable {
 		this.listarPrueba();
 	}
 
-	public String nuevoPrueba() {
-		this.setPrueba(new Prueba());
-		return "pago.xhtml";
-	}
-
 	public void insertarPrueba() {
 		prueba.setPersona(loginService.getPersona());
 		prService.insertar(prueba);

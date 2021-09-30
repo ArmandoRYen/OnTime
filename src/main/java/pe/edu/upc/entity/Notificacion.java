@@ -34,13 +34,13 @@ public class Notificacion implements Serializable {
 	private Evento evento;
 	
 	@ManyToOne
-	@JoinColumn(name="idPersona",nullable=false)
+	@JoinColumn(name="idPersona", nullable=false)
 	private Persona persona;
 
 	public Notificacion() {
 		super();
 	}	
-
+	
 	public Notificacion(int idNotificacion, String nombreNotificacion, Date fechaNotificacion, Evento evento,
 			Persona persona) {
 		super();
@@ -54,39 +54,30 @@ public class Notificacion implements Serializable {
 	public int getIdNotificacion() {
 		return idNotificacion;
 	}
-
 	public void setIdNotificacion(int idNotificacion) {
 		this.idNotificacion = idNotificacion;
 	}
-
 	public String getNombreNotificacion() {
 		return nombreNotificacion;
 	}
-
 	public void setNombreNotificacion(String nombreNotificacion) {
 		this.nombreNotificacion = nombreNotificacion;
 	}
-
 	public Date getFechaNotificacion() {
 		return fechaNotificacion;
 	}
-
 	public void setFechaNotificacion(Date fechaNotificacion) {
 		this.fechaNotificacion = fechaNotificacion;
 	}
-
 	public Evento getEvento() {
 		return evento;
 	}
-
 	public void setEvento(Evento evento) {
 		this.evento = evento;
 	}
-
 	public Persona getPersona() {
 		return persona;
 	}
-	
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
@@ -109,7 +100,7 @@ public class Notificacion implements Serializable {
 				&& idNotificacion == other.idNotificacion
 				&& Objects.equals(nombreNotificacion, other.nombreNotificacion)
 				&& Objects.equals(persona, other.persona);
-	}
+	}	
 
 }
 
