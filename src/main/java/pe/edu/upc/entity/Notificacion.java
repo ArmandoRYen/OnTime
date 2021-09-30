@@ -2,6 +2,7 @@ package pe.edu.upc.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,7 +38,6 @@ public class Notificacion implements Serializable {
 
 	public Notificacion() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Notificacion(int idNotificacion, String nombreNotificacion, Date horaNotificacion, String diaNotificacion,
@@ -90,6 +90,27 @@ public class Notificacion implements Serializable {
 		this.idEvento = idEvento;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(diaNotificacion, horaNotificacion, idEvento, idNotificacion, nombreNotificacion);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Notificacion other = (Notificacion) obj;
+		return Objects.equals(diaNotificacion, other.diaNotificacion)
+				&& Objects.equals(horaNotificacion, other.horaNotificacion) && Objects.equals(idEvento, other.idEvento)
+				&& idNotificacion == other.idNotificacion
+				&& Objects.equals(nombreNotificacion, other.nombreNotificacion);
+	}
+	
+	
 }
 
 

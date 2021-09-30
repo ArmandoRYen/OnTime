@@ -10,8 +10,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entity.Notificacion;
+import pe.edu.upc.entity.Persona;
 import pe.edu.upc.service.INotificacionService;
-
+import pe.edu.upc.service.IPersonaService;
+import pe.edu.upc.serviceimpl.LoginService;
 import pe.edu.upc.entity.Evento;
 import pe.edu.upc.service.IEventoService;
 
@@ -27,12 +29,21 @@ public class NotificacionController implements Serializable {
 	@Inject
 	private IEventoService evService;
 	
+	@Inject
+	private IPersonaService pService;
+	
 	private Notificacion notificacion;
 	List<Notificacion> listaNotificaciones;
 	
 	private Evento evento;
 	List<Evento> listaEventos;
 
+	private Persona persona;
+	List<Persona> listaPersonas;
+	
+	@Inject
+	private LoginService loginService;
+	
 	@PostConstruct
 	public void init() {
 		
@@ -42,31 +53,34 @@ public class NotificacionController implements Serializable {
 		this.listaEventos = new ArrayList<Evento>();
 		this.evento = new Evento();
 
+		this.listaPersonas = new ArrayList<Persona>();
+		this.persona = new Persona();	
+		
 		this.listarNotificacion();
 		this.listarEvento();
 	}
 
-	public String nuevaNotificacion() {
-		this.setNotificacion(new Notificacion());
-		return "notificacion.xhtml";
-	}
-
 	public void insertar() {
-		ntService.insertar(notificacion);
-		limpiarNotificacion();
-		this.listarNotificacion();
+		notificacion.setIdNotificacion(0);
+		Persona personaLogin = loginService.getPersona();
+		if(personaLogin != null) {
+			ntService.insertar(notificacion);
+			limpiarNotificacion();
+			this.listarNotificacion();
+		}
 	}
 
 	public void limpiarNotificacion() {
 		this.init();
 	}
 	
-	public void limpiarEvento() {
-		this.init();
-	}
-	
 	public void listarNotificacion() {
-		listaNotificaciones = ntService.listar();
+		Persona personaLogin = loginService.getPersona();
+		if (personaLogin == null) {
+			listaNotificaciones = ntService.listar();
+		} else {
+			listaNotificaciones = ntService.listarPorNombre(personaLogin.getNombrePersona());
+		}		
 	}
 	
 	public void listarEvento() {

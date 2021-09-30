@@ -41,5 +41,15 @@ public class NotificacionDaoImpl implements INotificacionDao, Serializable {
 		notificacion = em.getReference(Notificacion.class, idNotificacion);
 		em.remove(notificacion);
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Notificacion> listarPorNombrePersona(String nombre) {
+		List<Notificacion> lista =new ArrayList<Notificacion>();
+		Query q =em.createQuery("select n from Notificacion n where n.persona.nombrePersona like ?1");
+		q.setParameter(1, "%" + nombre + "%");
+		lista =(List<Notificacion>) q.getResultList();
+		return lista;
+	}
 
 }

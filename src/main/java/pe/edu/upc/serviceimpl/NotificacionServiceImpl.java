@@ -36,4 +36,8 @@ public class NotificacionServiceImpl implements INotificacionService, Serializab
 		ntD.eliminar(idNotificacion);		
 	}
 
+	@Override
+	public List<Notificacion> listarPorNombre(String nombre) {
+		return ntD.listarPorNombrePersona(nombre);
+	}
 }

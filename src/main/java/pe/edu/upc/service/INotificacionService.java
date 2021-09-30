@@ -8,4 +8,5 @@ public interface INotificacionService {
 	public void insertar(Notificacion notificacion);
 	public List<Notificacion> listar();
 	public void eliminar(int idNotificacion);
+	List<Notificacion> listarPorNombre(String nombre);
 }
