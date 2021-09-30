@@ -26,28 +26,29 @@ public class Notificacion implements Serializable {
 	@Column(name="nombreNotificacion", nullable=false, length=30)
 	private String nombreNotificacion;
 	
-	@Column(name="horaNotificacion", nullable=false)
-	private Date horaNotificacion;
-
-	@Column(name="diaNotificacion", nullable=false, length=60)
-	private String diaNotificacion;
+	@Column(name="fechaNotificacion", nullable=false)
+	private Date fechaNotificacion;
 	
 	@ManyToOne
 	@JoinColumn(name="idEvento", nullable=false)
-	private Evento idEvento;
+	private Evento evento;
+	
+	@ManyToOne
+	@JoinColumn(name="idPersona",nullable=false)
+	private Persona persona;
 
 	public Notificacion() {
 		super();
-	}
+	}	
 
-	public Notificacion(int idNotificacion, String nombreNotificacion, Date horaNotificacion, String diaNotificacion,
-			Evento idEvento) {
+	public Notificacion(int idNotificacion, String nombreNotificacion, Date fechaNotificacion, Evento evento,
+			Persona persona) {
 		super();
 		this.idNotificacion = idNotificacion;
 		this.nombreNotificacion = nombreNotificacion;
-		this.horaNotificacion = horaNotificacion;
-		this.diaNotificacion = diaNotificacion;
-		this.idEvento = idEvento;
+		this.fechaNotificacion = fechaNotificacion;
+		this.evento = evento;
+		this.persona = persona;
 	}
 
 	public int getIdNotificacion() {
@@ -66,33 +67,33 @@ public class Notificacion implements Serializable {
 		this.nombreNotificacion = nombreNotificacion;
 	}
 
-	public Date getHoraNotificacion() {
-		return horaNotificacion;
+	public Date getFechaNotificacion() {
+		return fechaNotificacion;
 	}
 
-	public void setHoraNotificacion(Date horaNotificacion) {
-		this.horaNotificacion = horaNotificacion;
+	public void setFechaNotificacion(Date fechaNotificacion) {
+		this.fechaNotificacion = fechaNotificacion;
 	}
 
-	public String getDiaNotificacion() {
-		return diaNotificacion;
+	public Evento getEvento() {
+		return evento;
 	}
 
-	public void setDiaNotificacion(String diaNotificacion) {
-		this.diaNotificacion = diaNotificacion;
+	public void setEvento(Evento evento) {
+		this.evento = evento;
 	}
 
-	public Evento getIdEvento() {
-		return idEvento;
+	public Persona getPersona() {
+		return persona;
 	}
-
-	public void setIdEvento(Evento idEvento) {
-		this.idEvento = idEvento;
+	
+	public void setPersona(Persona persona) {
+		this.persona = persona;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(diaNotificacion, horaNotificacion, idEvento, idNotificacion, nombreNotificacion);
+		return Objects.hash(evento, fechaNotificacion, idNotificacion, nombreNotificacion, persona);
 	}
 
 	@Override
@@ -104,13 +105,12 @@ public class Notificacion implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Notificacion other = (Notificacion) obj;
-		return Objects.equals(diaNotificacion, other.diaNotificacion)
-				&& Objects.equals(horaNotificacion, other.horaNotificacion) && Objects.equals(idEvento, other.idEvento)
+		return Objects.equals(evento, other.evento) && Objects.equals(fechaNotificacion, other.fechaNotificacion)
 				&& idNotificacion == other.idNotificacion
-				&& Objects.equals(nombreNotificacion, other.nombreNotificacion);
+				&& Objects.equals(nombreNotificacion, other.nombreNotificacion)
+				&& Objects.equals(persona, other.persona);
 	}
-	
-	
+
 }
 
 
