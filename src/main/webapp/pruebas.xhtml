@@ -53,6 +53,12 @@
 											<p:column headerText="Nota ponderada">
 												<h:outputText value="#{p.numeroNota * p.ponderado}" />
 											</p:column>
+											<p:column headerText="Acciones" exportable="false">
+										<p:commandButton class="ui-button-warning rounded-button"
+											icon="ui-icon-trash" update="@form"
+											action="#{notaController.eliminar(p)}">
+										</p:commandButton>
+									</p:column>
 
 										</p:dataTable>
 									 </div>
