@@ -13,6 +13,14 @@ import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.HorizontalBarChartModel;
+import org.primefaces.model.charts.ChartData;
+import org.primefaces.model.charts.donut.DonutChartDataSet;
+import org.primefaces.model.charts.donut.DonutChartModel;
+import org.primefaces.model.charts.optionconfig.elements.Elements;
+import org.primefaces.model.charts.optionconfig.elements.ElementsLine;
+import org.primefaces.model.charts.radar.RadarChartDataSet;
+import org.primefaces.model.charts.radar.RadarChartModel;
+import org.primefaces.model.charts.radar.RadarChartOptions;
 
 import pe.edu.upc.entity.Evento;
 import pe.edu.upc.service.IEventoService;
@@ -49,8 +57,12 @@ public class EventoController implements Serializable {
 
 	@Inject
 	private LoginService loginService;
-
+	
+	
+    private DonutChartModel donutModel;
 	private HorizontalBarChartModel horizontalBarModel;
+	private RadarChartModel radarModel;
+
 
 	@PostConstruct
 	public void init() {
@@ -67,6 +79,8 @@ public class EventoController implements Serializable {
 		this.listarEvento();
 		this.listarPersona();
 		this.createHorizontalBarModel();
+		this.createRadarChartModel();
+		this.createDonutChartModel();
 	}
 
 	public void insertarEvento() {
@@ -221,4 +235,100 @@ public class EventoController implements Serializable {
 		yAxis.setLabel("Tipo de Evento");
 	}
 
+	public RadarChartModel getRadarChartModel() {
+		
+		return radarModel;
+	}
+	
+	private void createRadarChartModel() {
+		radarModel = new RadarChartModel();
+        ChartData data = new ChartData();
+
+        RadarChartDataSet radarDataSet = new RadarChartDataSet();
+        radarDataSet.setLabel("My First Dataset");
+        radarDataSet.setFill(true);
+        radarDataSet.setBackgroundColor("rgba(255, 99, 132, 0.2)");
+        radarDataSet.setBorderColor("rgb(255, 99, 132)");
+        radarDataSet.setPointBackgroundColor("rgb(255, 99, 132)");
+        radarDataSet.setPointBorderColor("#fff");
+        radarDataSet.setPointHoverBackgroundColor("#fff");
+        radarDataSet.setPointHoverBorderColor("rgb(255, 99, 132)");
+        List<Number> dataVal = new ArrayList<>();
+        dataVal.add(65);
+        dataVal.add(59);
+        dataVal.add(90);
+        dataVal.add(81);
+        dataVal.add(56);
+        dataVal.add(55);
+        dataVal.add(40);
+        radarDataSet.setData(dataVal);
+        data.addChartDataSet(radarDataSet);
+
+        List<String> labels = new ArrayList<>();
+        labels.add("Eating");
+        labels.add("Drinking");
+        labels.add("Sleeping");
+        labels.add("Designing");
+        labels.add("Coding");
+        labels.add("Cycling");
+        labels.add("Running");
+        data.setLabels(labels);
+
+        /* Options */
+        RadarChartOptions options = new RadarChartOptions();
+        Elements elements = new Elements();
+        ElementsLine elementsLine = new ElementsLine();
+        elementsLine.setTension(0);
+        elementsLine.setBorderWidth(3);
+        elements.setLine(elementsLine);
+        options.setElements(elements);
+
+        radarModel.setOptions(options);
+        radarModel.setData(data);
+		
+	}
+	
+	public void setRadarChartModel(RadarChartModel radarmodel){
+		this.radarModel = radarmodel;
+		
+	}
+
+	private void createDonutChartModel() {
+		donutModel = new DonutChartModel();
+        ChartData data = new ChartData();
+
+        DonutChartDataSet dataSet = new DonutChartDataSet();
+        List<Number> values = new ArrayList<>();
+        values.add(300);
+        values.add(50);
+        values.add(100);
+        dataSet.setData(values);
+
+        List<String> bgColors = new ArrayList<>();
+        bgColors.add("rgb(255, 99, 132)");
+        bgColors.add("rgb(54, 162, 235)");
+        bgColors.add("rgb(255, 205, 86)");
+        dataSet.setBackgroundColor(bgColors);
+
+        data.addChartDataSet(dataSet);
+        List<String> labels = new ArrayList<>();
+        labels.add("Red");
+        labels.add("Blue");
+        labels.add("Yellow");
+        data.setLabels(labels);
+
+        donutModel.setData(data);
+		
+		
+		
+	}
+	
+	public DonutChartModel getDonutModel() {
+		return donutModel;
+	}
+
+	public void setDonutModel(DonutChartModel donutModel) {
+		this.donutModel = donutModel;
+	}
+	
 }

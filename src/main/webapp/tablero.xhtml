@@ -7,25 +7,27 @@
 <ui:composition template="master.xhtml">
 
 	<ui:define name="content">
-		
+<script type="text/javascript">
+    function skinRadarChart() {
+        Chart.defaults.startAngle = 36;
+        Chart.defaults.plugins.tooltip.cornerRadius = 3;
+        Chart.defaults.plugins.tooltip.enabled = true;
+        Chart.defaults.plugins.tooltip.mode = 'point';
+        Chart.defaults.plugins.tooltip.position = 'nearest';
+    }
+</script>		
 		
 	<div class="container">
 	<div class="row">
 	    <div class="col">	    	
 	    	<div class ="midiv">
-	    	STAT1
-	    	<br>Ingresar BLALBLABLABLALBA </br>
-			<br>Ingresar BLALBLABLABLALBA </br>			
-			<br>Ingresar BLALBLABLABLALBA </br>
+            <p:radarChart model="#{eventoController.radarChartModel}"/>	    	
 	    	</div>  
 	    	
 	    </div>
     	<div class="col">
     	   <div class ="midiv">
-    	   STAT2
-    	   <br>Ingresar BLALBLABLABLALBA </br>
-			<br>Ingresar BLALBLABLABLALBA </br>			
-			<br>Ingresar BLALBLABLABLALBA </br> 	   
+    	   <p:donutChart model="#{eventoController.donutModel}" />   
     	   </div>	    	
     	</div>
     	<div class="col">
