@@ -46,7 +46,6 @@ public class PruebaController implements Serializable {
 		this.listaPruebas = new ArrayList<Prueba>();
 		this.prueba = new Prueba();
 		
-		
 		this.listarTipoEvento();
 		this.listarPrueba();
 	}
@@ -63,20 +62,6 @@ public class PruebaController implements Serializable {
 		this.listarPrueba();
 	}
 
-	public void insertarTipoEvento() {
-		tipoevento.setIdTipoEvento(0);
-		Persona personaLogin = loginService.getPersona();
-		if (personaLogin != null) {
-			System.out.println(personaLogin.getNombrePersona());
-			tipoevento.setPersona(personaLogin);
-			teService.insertar(tipoevento);
-			limpiarPrueba();
-			this.listarTipoEvento();
-		} else {
-			System.out.println("null");
-		}
-	}
-	
 	public void limpiarPrueba() {
 		this.init();
 	}
