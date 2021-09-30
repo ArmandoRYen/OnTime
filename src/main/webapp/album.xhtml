@@ -20,89 +20,98 @@
 		<div class="container">
 			<div class="row">
 				<div class="midiv">
-
-					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary"
-						data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar</button>
+					<h:form>
+						<div class="col">
+							<p:commandButton value="Agregar" type="button"
+								styleClass="btn btn-secondary" onclick="PF('dlg2').show();"></p:commandButton>
+						</div>
+					</h:form>
 				</div>
 			</div>
 			<h:form>
 				<div class="row">
 					<div class="midiv">
 						<div class="contenedor mb-5 mt-3">
-						<div class="table table-striped table-bordered mydatatable ">
-							<p:dataTable emptyMessage="No existen Datos">
-					<p:column headerText="Nombre">
-						<h:outputText />
-					</p:column>
-					<p:column headerText="Tipo de Evento">
-						<h:outputText />
-					</p:column>
-					<p:column headerText="Imagen">
-						<p:graphicImage />
-					</p:column>
-					<p:column headerText="Acciones">
-						<h:outputText />
-					</p:column>
+							<div class="table table-striped table-bordered mydatatable ">
+								<p:dataTable id="lstFotos" var="f"
+									value="#{fotoController.listaFotos}"
+									styleClass="table table-bordered"
+									emptyMessage="No existen registros" rowIndexVar="item"
+									style="margin-bottom:0">
 
-				</p:dataTable>
-						</div>
-						
-						</div>
-					</div>
-				</div>
+									<p:column headerText="Nombre" sortBy="#{f.nombreFoto}">
+										<h:outputText value="#{f.nombreFoto}" />
+									</p:column>
+									<p:column headerText="Nombre"
+										sortBy="#{f.idTipoEvento.nombreTipoEvento}">
+										<h:outputText value="#{f.idTipoEvento.nombreTipoEvento}" />
+									</p:column>
+									<p:column headerText="Imagen" sortBy="#{f.image}">
+										<p:graphicImage value="#{f.image}" width="100px" />
+									</p:column>
 
+									<p:column headerText="Acciones" exportable="false">
+										<p:commandButton class="ui-button-warning rounded-button"
+											icon="ui-icon-trash" update="@form"
+											action="#{fotoController.eliminar(f)}">
+										</p:commandButton>
+									</p:column>
 
-		</h:form>
-
-		</div>	
-		<div class="modal fade" id="exampleModal" tabindex="-1"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Agregar Nueva Foto</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-
-						<h:form>
-
-							<div class="row">
-
-								<div class="col">
-									<label for="Aname">Nombre del Evento:</label><br /> <input
-										type="text" id="Aname" name="Aname" /><br /> <label
-										for="Mname">Tipo de Evento:</label><br /> <input type="text"
-										id="Mname" name="Mname" /><br />
-
-								</div>
-								<div class="col">
-									 <p:fileUpload mode="simple" skinSimple="true" label="Import" chooseIcon="pi pi-download"/>
-								</div>
-
+								</p:dataTable>
 							</div>
 
-						</h:form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save
-							changes</button>
+						</div>
 					</div>
 				</div>
-			</div>
+
+
+			</h:form>
+
 		</div>
-		
+		<p:dialog header="Agregar Nueva Foto" widgetVar="dlg2" modal="true"
+			height="30rem">
+			<h:form>
+				<div class="row">
+					<div class="col">
+						<h:outputLabel for="Aname" value="Nombre de evento" />
+						<br />
+						<p:inputText autocomplete="off" id="Acreedor"
+							styleClass="form-control"
+							value="#{fotoController.foto.nombreFoto}" required="true" />
+						<br />
+						<h:outputLabel for="tpeven" value="Tipo Evento" />
+						<br />
+						<p:selectOneMenu id="tpeven"
+							value="#{fotoController.foto.idTipoEvento}"
+							converter="omnifaces.SelectItemsConverter">
+							<f:selectItems value="#{fotoController.listaTipoEventos}"
+								var="te" itemLabel="#{te.nombreTipoEvento}" itelValue="#{te}" />
+						</p:selectOneMenu>
+						<br />
+						<h:outputLabel for="foto" value="foto" />
+						<br />
+						<p:inputText autocomplete="off" id="fotoa"
+							styleClass="form-control" value="#{fotoController.foto.image}"
+							required="true" />
+
+
+						<p:commandButton value="Guardar"
+							actionListener="#{fotoController.insertar()}"
+							styleClass="btn btn-primary" update="@form"
+							action="album?faces-redirect=true" />
+						<p:commandButton value="Cancelar" onclick="PF('dlg2').hide();" />
+
+					</div>
+				</div>
+			</h:form>
+		</p:dialog>
+
 	</ui:define>
 
 
 
 
 </ui:composition>
-
 
 
 
