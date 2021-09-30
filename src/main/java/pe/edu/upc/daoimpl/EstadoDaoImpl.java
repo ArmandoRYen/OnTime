@@ -29,7 +29,7 @@ public class EstadoDaoImpl implements IEstadoDao, Serializable {
 	@Override
 	public List<Estado> listar() {
 		List<Estado> lista = new ArrayList<Estado>(); 
-		Query q = em.createQuery("select es from Estado es");
+		Query q = em.createQuery("select e from Estado e");
 		lista =(List<Estado>) q.getResultList();		
 		return lista;
 	}

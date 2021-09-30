@@ -64,8 +64,8 @@
 											<p:column headerText="Tipo de Pendiente" sortBy="#{p.nombreTipoPendiente}">
 												<h:outputText value="#{p.nombrePendiente}" />
 											</p:column>
-											<p:column headerText="Estado" sortBy="#{p.estado.nombreEstado}">
-												<h:outputText value="#{p.estado.nombreEstado}" />
+											<p:column headerText="Estado" sortBy="#{p.estado.nombreestado}">
+												<h:outputText value="#{p.estado.nombreestado}" />
 											</p:column>
 										</p:dataTable>
 
@@ -137,7 +137,7 @@
 							value="#{pendienteController.estado.idEstado}"
 							converter="omnifaces.SelectItemsConverter">
 							<f:selectItems value="#{estadoController.listaEstado}"
-								var="estado" itemLabel="#{estado.nombreEstado}"
+								var="estado" itemLabel="#{estado.nombreestado}"
 								itemValue="#{estado}" />
 						</p:selectOneMenu>
 						<br />						
