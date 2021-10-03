@@ -56,7 +56,7 @@
 												<h:outputText value="#{p.nombrePendiente}" />
 											</p:column>
 											<p:column headerText="Tipo de Pendiente" sortBy="#{p.nombreTipoPendiente}">
-												<h:outputText value="#{p.nombrePendiente}" />
+												<h:outputText value="#{p.nombreTipoPendiente}" />
 											</p:column>
 											<p:column headerText="Estado" sortBy="#{p.estado.nombreestado}">
 												<h:outputText value="#{p.estado.nombreestado}" />
@@ -64,7 +64,7 @@
 											<p:column headerText="Acciones" exportable="false">
 										<p:commandButton class="ui-button-warning rounded-button"
 											icon="ui-icon-trash" update="@form"
-											action="#{pendienteController.eliminar(f)}">
+											action="#{pendienteController.eliminar(p)}">
 										</p:commandButton>
 									</p:column>
 										</p:dataTable>
